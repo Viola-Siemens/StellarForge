@@ -1,0 +1,28 @@
+modLoader="javafml"
+loaderVersion="[46,)"
+license="MIT"
+issueTrackerURL="https://github.com/Viola-Siemens/StellarForge/issues"
+
+[[mods]]
+modId="stellarforge"
+version="${file.jarVersion}"
+displayName="StellarForge"
+logoFile="logo.png"
+credits="MangoMAOU, Liu Dongyu, Whyte_V"
+authors="MangoMAOU, Liu Dongyu, Whyte_V"
+description='''
+This mod adds some decoration blocks in vanilla style, such as Polished Stone, Dark Prismarine Wall, Mud Tiles.
+'''
+
+[[dependencies.stellarforge]]
+    modId="forge"
+    mandatory=true
+    versionRange="[46,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.stellarforge]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.20,1.21)"
+    ordering="NONE"
+    side="BOTH"
