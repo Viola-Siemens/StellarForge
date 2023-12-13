@@ -1,0 +1,354 @@
+{
+  "multipart": [
+    {
+      "apply": [
+        {
+          "model": "stellarforge:block/bricks/brick_wall_post0"
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_post1"
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_post2"
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_post3"
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_post4"
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_post5"
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_post6"
+        }
+      ],
+      "when": {
+        "up": "true"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side0",
+          "uvlock": true
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side1",
+          "uvlock": true
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side2",
+          "uvlock": true
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side3",
+          "uvlock": true
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side4",
+          "uvlock": true
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side5",
+          "uvlock": true
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side6",
+          "uvlock": true
+        }
+      ],
+      "when": {
+        "north": "low"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side0",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side1",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side2",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side3",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side4",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side5",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side6",
+          "uvlock": true,
+          "y": 90
+        }
+      ],
+      "when": {
+        "east": "low"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side0",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side1",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side2",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side3",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side4",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side5",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side6",
+          "uvlock": true,
+          "y": 180
+        }
+      ],
+      "when": {
+        "south": "low"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side0",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side1",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side2",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side3",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side4",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side5",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side6",
+          "uvlock": true,
+          "y": 270
+        }
+      ],
+      "when": {
+        "west": "low"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side_tall0",
+          "uvlock": true
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side_tall1",
+          "uvlock": true
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side_tall2",
+          "uvlock": true
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side_tall3",
+          "uvlock": true
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side_tall4",
+          "uvlock": true
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side_tall5",
+          "uvlock": true
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side_tall6",
+          "uvlock": true
+        }
+      ],
+      "when": {
+        "north": "tall"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side_tall0",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side_tall1",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side_tall2",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side_tall3",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side_tall4",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side_tall5",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side_tall6",
+          "uvlock": true,
+          "y": 90
+        }
+      ],
+      "when": {
+        "east": "tall"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side_tall0",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side_tall1",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side_tall2",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side_tall3",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side_tall4",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side_tall5",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side_tall6",
+          "uvlock": true,
+          "y": 180
+        }
+      ],
+      "when": {
+        "south": "tall"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side_tall0",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side_tall1",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side_tall2",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side_tall3",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side_tall4",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side_tall5",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "stellarforge:block/bricks/brick_wall_side_tall6",
+          "uvlock": true,
+          "y": 270
+        }
+      ],
+      "when": {
+        "west": "tall"
+      }
+    }
+  ]
+}

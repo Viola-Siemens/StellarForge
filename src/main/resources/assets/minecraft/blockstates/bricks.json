@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "stellarforge:block/bricks/bricks0"
+      },
+      {
+        "model": "stellarforge:block/bricks/bricks1"
+      },
+      {
+        "model": "stellarforge:block/bricks/bricks2"
+      },
+      {
+        "model": "stellarforge:block/bricks/bricks3"
+      },
+      {
+        "model": "stellarforge:block/bricks/bricks4"
+      },
+      {
+        "model": "stellarforge:block/bricks/bricks5"
+      },
+      {
+        "model": "stellarforge:block/bricks/bricks6"
+      }
+    ]
+  }
+}

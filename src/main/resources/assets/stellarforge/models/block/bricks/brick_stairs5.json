@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "stellarforge:bricks5",
+    "side": "stellarforge:bricks5",
+    "top": "stellarforge:bricks5"
+  }
+}

@@ -3,5 +3,18 @@
   "language.code": "zh_cn",
   "language.region": "China",
   
-  "itemGroup.stellarforge": "星辰铸造"
+  "itemGroup.stellarforge": "星辰铸造",
+
+  "block.stellarforge.andesite_bricks": "安山岩砖",
+  "block.stellarforge.mossy_andesite_bricks": "生苔安山岩砖",
+  "block.stellarforge.cracked_andesite_bricks": "裂纹安山岩砖",
+  "block.stellarforge.chiseled_andesite_bricks": "雕纹安山岩砖",
+  "block.stellarforge.diorite_bricks": "闪长岩砖",
+  "block.stellarforge.mossy_diorite_bricks": "生苔闪长岩砖",
+  "block.stellarforge.cracked_diorite_bricks": "裂纹闪长岩砖",
+  "block.stellarforge.chiseled_diorite_bricks": "雕纹闪长岩砖",
+  "block.stellarforge.granite_bricks": "花岗岩砖",
+  "block.stellarforge.mossy_granite_bricks": "生苔花岗岩砖",
+  "block.stellarforge.cracked_granite_bricks": "裂纹花岗岩砖",
+  "block.stellarforge.chiseled_granite_bricks": "雕纹花岗岩砖"
 }

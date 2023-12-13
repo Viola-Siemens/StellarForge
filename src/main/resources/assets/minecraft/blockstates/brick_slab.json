@@ -1,0 +1,73 @@
+{
+  "variants": {
+    "type=bottom": [
+      {
+        "model": "stellarforge:block/bricks/brick_slab0"
+      },
+      {
+        "model": "stellarforge:block/bricks/brick_slab1"
+      },
+      {
+        "model": "stellarforge:block/bricks/brick_slab2"
+      },
+      {
+        "model": "stellarforge:block/bricks/brick_slab3"
+      },
+      {
+        "model": "stellarforge:block/bricks/brick_slab4"
+      },
+      {
+        "model": "stellarforge:block/bricks/brick_slab5"
+      },
+      {
+        "model": "stellarforge:block/bricks/brick_slab6"
+      }
+    ],
+    "type=double": [
+      {
+        "model": "stellarforge:block/bricks/bricks0"
+      },
+      {
+        "model": "stellarforge:block/bricks/bricks1"
+      },
+      {
+        "model": "stellarforge:block/bricks/bricks2"
+      },
+      {
+        "model": "stellarforge:block/bricks/bricks3"
+      },
+      {
+        "model": "stellarforge:block/bricks/bricks4"
+      },
+      {
+        "model": "stellarforge:block/bricks/bricks5"
+      },
+      {
+        "model": "stellarforge:block/bricks/bricks6"
+      }
+    ],
+    "type=top": [
+      {
+        "model": "stellarforge:block/bricks/brick_slab_top0"
+      },
+      {
+        "model": "stellarforge:block/bricks/brick_slab_top1"
+      },
+      {
+        "model": "stellarforge:block/bricks/brick_slab_top2"
+      },
+      {
+        "model": "stellarforge:block/bricks/brick_slab_top3"
+      },
+      {
+        "model": "stellarforge:block/bricks/brick_slab_top4"
+      },
+      {
+        "model": "stellarforge:block/bricks/brick_slab_top5"
+      },
+      {
+        "model": "stellarforge:block/bricks/brick_slab_top6"
+      }
+    ]
+  }
+}

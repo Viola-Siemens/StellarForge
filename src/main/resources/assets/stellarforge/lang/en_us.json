@@ -3,5 +3,18 @@
   "language.code": "en_us",
   "language.region": "United States",
   
-  "itemGroup.stellarforge": "StellarForge"
+  "itemGroup.stellarforge": "StellarForge",
+
+  "block.stellarforge.andesite_bricks": "Andesite Bricks",
+  "block.stellarforge.mossy_andesite_bricks": "Mossy Andesite Bricks",
+  "block.stellarforge.cracked_andesite_bricks": "Cracked Andesite Bricks",
+  "block.stellarforge.chiseled_andesite_bricks": "Chiseled Andesite Bricks",
+  "block.stellarforge.diorite_bricks": "Diorite Bricks",
+  "block.stellarforge.mossy_diorite_bricks": "Mossy Diorite Bricks",
+  "block.stellarforge.cracked_diorite_bricks": "Cracked Diorite Bricks",
+  "block.stellarforge.chiseled_diorite_bricks": "Chiseled Diorite Bricks",
+  "block.stellarforge.granite_bricks": "Granite Bricks",
+  "block.stellarforge.mossy_granite_bricks": "Mossy Granite Bricks",
+  "block.stellarforge.cracked_granite_bricks": "Cracked Granite Bricks",
+  "block.stellarforge.chiseled_granite_bricks": "Chiseled Granite Bricks"
 }
