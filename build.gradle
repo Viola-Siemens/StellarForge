@@ -144,11 +144,11 @@ jar {
     manifest {
         attributes([
                 "Specification-Title"     : "StellarForge",
-                "Specification-Vendor"    : "MangoMAOU, Liu Dongyu, Whyte_V",
+                "Specification-Vendor"    : "MangoMAOU, Liu Dongyu, rinkiri",
                 "Specification-Version"   : "1",
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
-                "Implementation-Vendor"   : "MangoMAOU, Liu Dongyu, Whyte_V",
+                "Implementation-Vendor"   : "MangoMAOU, Liu Dongyu, rinkiri",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
                 'FMLCorePluginContainsFMLMod': 'true',
                 "MixinConfigs"            : "stellarforge.mixins.json"
