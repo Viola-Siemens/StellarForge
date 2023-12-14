@@ -49,6 +49,7 @@ public class StellarForge {
 		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, SFCommonConfig.getConfig());
 
 		bus.addListener(this::setup);
+		bus.addListener(SFContent::onNewRegistry);
 		MinecraftForge.EVENT_BUS.register(new ForgeEventHandler());
 		MinecraftForge.EVENT_BUS.addListener(SFContent::registerCommands);
 		MinecraftForge.EVENT_BUS.register(this);

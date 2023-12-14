@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/wall_inventory",
   "textures": {
-    "wall": "stellarforge:bricks0"
+    "wall": "stellarforge:bricks/bricks0"
   }
 }
