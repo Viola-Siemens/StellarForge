@@ -50,7 +50,6 @@ public class StellarForge {
 
 		bus.addListener(this::setup);
 		bus.addListener(SFContent::onNewRegistry);
-		MinecraftForge.EVENT_BUS.register(new ForgeEventHandler());
 		MinecraftForge.EVENT_BUS.addListener(SFContent::registerCommands);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
