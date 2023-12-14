@@ -1,8 +1,8 @@
 {
   "parent": "minecraft:block/slab_top",
   "textures": {
-    "bottom": "stellarforge:bricks4",
-    "side": "stellarforge:bricks4",
-    "top": "stellarforge:bricks4"
+    "bottom": "stellarforge:block/bricks4",
+    "side": "stellarforge:block/bricks4",
+    "top": "stellarforge:block/bricks4"
   }
 }

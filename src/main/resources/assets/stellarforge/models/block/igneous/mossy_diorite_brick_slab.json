@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "stellarforge:block/mossy_diorite_bricks",
+    "side": "stellarforge:block/mossy_diorite_bricks",
+    "top": "stellarforge:block/mossy_diorite_bricks"
+  }
+}

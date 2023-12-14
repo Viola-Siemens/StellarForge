@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "stellarforge:block/mossy_andesite_bricks",
+    "side": "stellarforge:block/mossy_andesite_bricks",
+    "top": "stellarforge:block/mossy_andesite_bricks"
+  }
+}

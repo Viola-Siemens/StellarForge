@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "stellarforge:bricks2"
+    "all": "stellarforge:block/bricks2"
   }
 }
