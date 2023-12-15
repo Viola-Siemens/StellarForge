@@ -41,6 +41,9 @@
     "stellarforge:cracked_granite_brick_wall",
     "stellarforge:chiseled_granite_bricks",
     
+    "stellarforge:cracked_nether_brick_stairs",
+    "stellarforge:cracked_nether_brick_slab",
+    "stellarforge:cracked_nether_brick_wall",
     "stellarforge:cracked_stone_brick_stairs",
     "stellarforge:cracked_stone_brick_slab",
     "stellarforge:cracked_stone_brick_wall",
@@ -50,11 +53,20 @@
     "stellarforge:cracked_deepslate_tile_stairs",
     "stellarforge:cracked_deepslate_tile_slab",
     "stellarforge:cracked_deepslate_tile_wall",
-    "stellarforge:cracked_nether_brick_stairs",
-    "stellarforge:cracked_nether_brick_slab",
-    "stellarforge:cracked_nether_brick_wall",
     "stellarforge:cracked_polished_blackstone_brick_stairs",
     "stellarforge:cracked_polished_blackstone_brick_slab",
-    "stellarforge:cracked_polished_blackstone_brick_wall"
+    "stellarforge:cracked_polished_blackstone_brick_wall",
+    "stellarforge:cobbled_blackstone",
+    "stellarforge:cobbled_blackstone_stairs",
+    "stellarforge:cobbled_blackstone_slab",
+    "stellarforge:cobbled_blackstone_wall",
+    "stellarforge:mossy_cobbled_blackstone",
+    "stellarforge:mossy_cobbled_blackstone_stairs",
+    "stellarforge:mossy_cobbled_blackstone_slab",
+    "stellarforge:mossy_cobbled_blackstone_wall",
+    "stellarforge:smooth_blackstone",
+    "stellarforge:smooth_blackstone_stairs",
+    "stellarforge:smooth_blackstone_slab",
+    "stellarforge:smooth_blackstone_wall"
   ]
 }

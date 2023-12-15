@@ -11,10 +11,13 @@
     "stellarforge:mossy_granite_brick_slab",
     "stellarforge:cracked_granite_brick_slab",
     
+    "stellarforge:cracked_nether_brick_slab",
     "stellarforge:cracked_stone_brick_slab",
     "stellarforge:cracked_deepslate_brick_slab",
     "stellarforge:cracked_deepslate_tile_slab",
-    "stellarforge:cracked_nether_brick_slab",
-    "stellarforge:cracked_polished_blackstone_brick_slab"
+    "stellarforge:cracked_polished_blackstone_brick_slab",
+    "stellarforge:cobbled_blackstone_slab",
+    "stellarforge:mossy_cobbled_blackstone_slab",
+    "stellarforge:smooth_blackstone_slab"
   ]
 }

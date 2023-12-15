@@ -1,6 +1,7 @@
 package com.hexagram2021.stellarforge.common.util;
 
 import com.google.common.collect.ImmutableSet;
+import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
@@ -19,7 +20,7 @@ import java.util.function.Supplier;
 
 import static com.hexagram2021.stellarforge.common.util.RegistryHelper.getRegistryName;
 
-@SuppressWarnings({"deprecation", "unused"})
+@SuppressWarnings({"deprecation", "unused", "UnusedReturnValue"})
 public interface RegistryChecker {
 	Set<Block> WHITELIST_NO_LOOT_TABLE_BLOCKS = ImmutableSet.of(
 			Blocks.AIR, Blocks.VOID_AIR, Blocks.CAVE_AIR, Blocks.WATER, Blocks.LAVA, Blocks.LIGHT,
@@ -27,6 +28,10 @@ public interface RegistryChecker {
 			Blocks.FROSTED_ICE, Blocks.END_GATEWAY, Blocks.END_PORTAL_FRAME, Blocks.COMMAND_BLOCK,
 			Blocks.REPEATING_COMMAND_BLOCK, Blocks.CHAIN_COMMAND_BLOCK, Blocks.STRUCTURE_BLOCK, Blocks.STRUCTURE_VOID,
 			Blocks.BUBBLE_COLUMN, Blocks.JIGSAW, Blocks.BARRIER
+	);
+	Set<Block> WHITELIST_NOT_IN_MINEABLE_TAGS = ImmutableSet.of(
+			Blocks.COMMAND_BLOCK, Blocks.REPEATING_COMMAND_BLOCK, Blocks.CHAIN_COMMAND_BLOCK,
+			Blocks.STRUCTURE_BLOCK, Blocks.JIGSAW
 	);
 	Set<Block> WHITELIST_NO_ITEM_BLOCKS = ImmutableSet.of(
 			Blocks.AIR, Blocks.VOID_AIR, Blocks.CAVE_AIR, Blocks.WATER, Blocks.LAVA, Blocks.PISTON_HEAD,
@@ -75,6 +80,10 @@ public interface RegistryChecker {
 			tagCheckSuffix(id, "_glazed_terracotta").ifFailed(
 					() -> tagCheckSuffix(id, block, blockItem, "_terracotta", BlockTags.TERRACOTTA, ItemTags.TERRACOTTA)
 			);
+
+			if(block.defaultBlockState().requiresCorrectToolForDrops()) {
+				checkIn(id, block, "mineable", BlockTags.MINEABLE_WITH_AXE, BlockTags.MINEABLE_WITH_HOE, BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.MINEABLE_WITH_SHOVEL);
+			}
 
 			if(!WHITELIST_NO_LOOT_TABLE_BLOCKS.contains(block) &&
 					(block.getLootTable().equals(BuiltInLootTables.EMPTY) || lootDataManager.getLootTable(block.getLootTable()).equals(LootTable.EMPTY))) {
@@ -144,6 +153,36 @@ public interface RegistryChecker {
 			return new CheckResult(true, error);
 		}
 		return new CheckResult(false);
+	}
+
+	@SafeVarargs
+	static CheckResult checkIn(ResourceLocation id, Block block, String tagDesc, TagKey<Block>... blockTags) {
+		boolean error = true;
+		Holder.Reference<Block> holder = block.builtInRegistryHolder();
+		for(TagKey<Block> blockTag: blockTags) {
+			if(holder.is(blockTag)) {
+				error = false;
+				break;
+			}
+		}
+		if(error) {
+			SFLogger.warn("[Registry Check] Block %s is not in any of the `%s` tags.".formatted(id, tagDesc));
+		}
+		return new CheckResult(true, error);
+	}
+
+	@SafeVarargs
+	static CheckResult checkNotIn(ResourceLocation id, Block block, TagKey<Block>... blockTags) {
+		boolean error = false;
+		Holder.Reference<Block> holder = block.builtInRegistryHolder();
+		for(TagKey<Block> blockTag: blockTags) {
+			if(holder.is(blockTag)) {
+				error = true;
+				SFLogger.warn("[Registry Check] Block %s is not supposed to be in tag %s.".formatted(id, blockTag));
+				break;
+			}
+		}
+		return new CheckResult(true, error);
 	}
 
 	class CheckResult {

@@ -24,6 +24,17 @@ import static com.hexagram2021.stellarforge.common.util.RegistryHelper.getRegist
 public final class SFBlocks {
 	public static final DeferredRegister<Block> REGISTER = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
 
+	public static final class Bricks {
+		public static final DecorBlockEntry CRACKED_NETHER_BRICKS = new DecorBlockEntry(Blocks.CRACKED_NETHER_BRICKS, SFBlocks::toItem);
+
+
+		private Bricks() {
+		}
+
+		private static void init() {
+		}
+	}
+
 	public static final class Igneous {
 		public static final DecorBlockEntry ANDESITE_BRICKS = new DecorBlockEntry("andesite_bricks", () -> BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS), SFBlocks::toItem);
 		public static final DecorBlockEntry MOSSY_ANDESITE_BRICKS = new DecorBlockEntry("mossy_andesite_bricks", () -> BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS), SFBlocks::toItem);
@@ -51,8 +62,11 @@ public final class SFBlocks {
 		public static final DecorBlockEntry CRACKED_STONE_BRICKS = new DecorBlockEntry(Blocks.CRACKED_STONE_BRICKS, SFBlocks::toItem);
 		public static final DecorBlockEntry CRACKED_DEEPSLATE_BRICKS = new DecorBlockEntry(Blocks.CRACKED_DEEPSLATE_BRICKS, SFBlocks::toItem);
 		public static final DecorBlockEntry CRACKED_DEEPSLATE_TILES = new DecorBlockEntry(Blocks.CRACKED_DEEPSLATE_TILES, SFBlocks::toItem);
-		public static final DecorBlockEntry CRACKED_NETHER_BRICKS = new DecorBlockEntry(Blocks.CRACKED_NETHER_BRICKS, SFBlocks::toItem);
 		public static final DecorBlockEntry CRACKED_POLISHED_BLACKSTONE_BRICKS = new DecorBlockEntry(Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS, SFBlocks::toItem);
+
+		public static final DecorBlockEntry COBBLED_BLACKSTONE = new DecorBlockEntry("cobbled_blackstone", () -> BlockBehaviour.Properties.copy(Blocks.BLACKSTONE), SFBlocks::toItem);
+		public static final DecorBlockEntry MOSSY_COBBLED_BLACKSTONE = new DecorBlockEntry("mossy_cobbled_blackstone", () -> BlockBehaviour.Properties.copy(Blocks.BLACKSTONE), SFBlocks::toItem);
+		public static final DecorBlockEntry SMOOTH_BLACKSTONE = new DecorBlockEntry("smooth_blackstone", () -> BlockBehaviour.Properties.copy(Blocks.BLACKSTONE), SFBlocks::toItem);
 
 		private Stone() {
 		}
@@ -64,6 +78,7 @@ public final class SFBlocks {
 	public static void init(IEventBus bus) {
 		REGISTER.register(bus);
 
+		Bricks.init();
 		Igneous.init();
 		Stone.init();
 	}

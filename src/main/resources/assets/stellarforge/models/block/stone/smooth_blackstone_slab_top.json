@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "stellarforge:block/smooth_blackstone",
+    "side": "stellarforge:block/smooth_blackstone",
+    "top": "stellarforge:block/smooth_blackstone"
+  }
+}
