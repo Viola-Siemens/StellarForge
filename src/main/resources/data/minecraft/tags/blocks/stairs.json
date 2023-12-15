@@ -1,5 +1,20 @@
 {
   "replace": false,
   "values": [
+    "stellarforge:andesite_brick_stairs",
+    "stellarforge:mossy_andesite_brick_stairs",
+    "stellarforge:cracked_andesite_brick_stairs",
+    "stellarforge:diorite_brick_stairs",
+    "stellarforge:mossy_diorite_brick_stairs",
+    "stellarforge:cracked_diorite_brick_stairs",
+    "stellarforge:granite_brick_stairs",
+    "stellarforge:mossy_granite_brick_stairs",
+    "stellarforge:cracked_granite_brick_stairs",
+    
+    "stellarforge:cracked_stone_brick_stairs",
+    "stellarforge:cracked_deepslate_brick_stairs",
+    "stellarforge:cracked_deepslate_tile_stairs",
+    "stellarforge:cracked_nether_brick_stairs",
+    "stellarforge:cracked_polished_blackstone_brick_stairs"
   ]
 }

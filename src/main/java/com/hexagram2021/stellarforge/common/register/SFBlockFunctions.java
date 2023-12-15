@@ -1,5 +1,6 @@
 package com.hexagram2021.stellarforge.common.register;
 
+import com.hexagram2021.stellarforge.api.events.CrackBlockEvent;
 import com.hexagram2021.stellarforge.api.events.FreezeBlockEvent;
 import com.hexagram2021.stellarforge.api.events.MossifyBlockEvent;
 import com.hexagram2021.stellarforge.common.function.BlockFunction;
@@ -88,6 +89,28 @@ public class SFBlockFunctions {
 			}
 
 			MossifyBlockEvent event = new MossifyBlockEvent(level, pos, state, ret);
+			MinecraftForge.EVENT_BUS.post(event);
+
+			return event.getTarget();
+		});
+		REGISTER.register("crack", () -> (level, pos, state) -> {
+			BlockState ret = null;
+
+			if(state.is(Blocks.STONE_BRICKS)) {
+				ret = Blocks.CRACKED_STONE_BRICKS.defaultBlockState();
+			} else if(state.is(Blocks.DEEPSLATE_BRICKS)) {
+				ret = Blocks.CRACKED_DEEPSLATE_BRICKS.withPropertiesOf(state);
+			} else if(state.is(Blocks.DEEPSLATE_TILES)) {
+				ret = Blocks.CRACKED_DEEPSLATE_TILES.withPropertiesOf(state);
+			} else if(state.is(Blocks.NETHER_BRICKS)) {
+				ret = Blocks.CRACKED_NETHER_BRICKS.withPropertiesOf(state);
+			} else if(state.is(Blocks.POLISHED_BLACKSTONE_BRICKS)) {
+				ret = Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS.defaultBlockState();
+			} else if(state.is(Blocks.INFESTED_STONE_BRICKS)) {
+				ret = Blocks.INFESTED_CRACKED_STONE_BRICKS.withPropertiesOf(state);
+			}
+
+			CrackBlockEvent event = new CrackBlockEvent(level, pos, state, ret);
 			MinecraftForge.EVENT_BUS.post(event);
 
 			return event.getTarget();

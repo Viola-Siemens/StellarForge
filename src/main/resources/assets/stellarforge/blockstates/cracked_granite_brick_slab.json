@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "stellarforge:block/igneous/cracked_granite_brick_slab"
+    },
+    "type=double": {
+      "model": "stellarforge:block/igneous/cracked_granite_bricks"
+    },
+    "type=top": {
+      "model": "stellarforge:block/igneous/cracked_granite_brick_slab_top"
+    }
+  }
+}

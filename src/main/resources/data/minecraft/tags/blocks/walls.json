@@ -1,5 +1,20 @@
 {
   "replace": false,
   "values": [
+    "stellarforge:andesite_brick_wall",
+    "stellarforge:mossy_andesite_brick_wall",
+    "stellarforge:cracked_andesite_brick_wall",
+    "stellarforge:diorite_brick_wall",
+    "stellarforge:mossy_diorite_brick_wall",
+    "stellarforge:cracked_diorite_brick_wall",
+    "stellarforge:granite_brick_wall",
+    "stellarforge:mossy_granite_brick_wall",
+    "stellarforge:cracked_granite_brick_wall",
+    
+    "stellarforge:cracked_stone_brick_wall",
+    "stellarforge:cracked_deepslate_brick_wall",
+    "stellarforge:cracked_deepslate_tile_wall",
+    "stellarforge:cracked_nether_brick_wall",
+    "stellarforge:cracked_polished_blackstone_brick_wall"
   ]
 }

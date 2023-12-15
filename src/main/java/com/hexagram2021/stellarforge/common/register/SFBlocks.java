@@ -19,6 +19,7 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 import static com.hexagram2021.stellarforge.StellarForge.MODID;
+import static com.hexagram2021.stellarforge.common.util.RegistryHelper.getRegistryName;
 
 public final class SFBlocks {
 	public static final DeferredRegister<Block> REGISTER = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
@@ -27,19 +28,33 @@ public final class SFBlocks {
 		public static final DecorBlockEntry ANDESITE_BRICKS = new DecorBlockEntry("andesite_bricks", () -> BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS), SFBlocks::toItem);
 		public static final DecorBlockEntry MOSSY_ANDESITE_BRICKS = new DecorBlockEntry("mossy_andesite_bricks", () -> BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS), SFBlocks::toItem);
 		public static final BlockEntry<Block> CHISELED_ANDESITE_BRICKS = new BlockEntry<>("chiseled_andesite_bricks", () -> BlockBehaviour.Properties.copy(Blocks.CHISELED_STONE_BRICKS), Block::new, SFBlocks::toItem);
-		public static final BlockEntry<Block> CRACKED_ANDESITE_BRICKS = new BlockEntry<>("cracked_andesite_bricks", () -> BlockBehaviour.Properties.copy(Blocks.CRACKED_STONE_BRICKS), Block::new, SFBlocks::toItem);
+		public static final DecorBlockEntry CRACKED_ANDESITE_BRICKS = new DecorBlockEntry("cracked_andesite_bricks", () -> BlockBehaviour.Properties.copy(Blocks.CRACKED_STONE_BRICKS), SFBlocks::toItem);
 
 		public static final DecorBlockEntry DIORITE_BRICKS = new DecorBlockEntry("diorite_bricks", () -> BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS), SFBlocks::toItem);
 		public static final DecorBlockEntry MOSSY_DIORITE_BRICKS = new DecorBlockEntry("mossy_diorite_bricks", () -> BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS), SFBlocks::toItem);
 		public static final BlockEntry<Block> CHISELED_DIORITE_BRICKS = new BlockEntry<>("chiseled_diorite_bricks", () -> BlockBehaviour.Properties.copy(Blocks.CHISELED_STONE_BRICKS), Block::new, SFBlocks::toItem);
-		public static final BlockEntry<Block> CRACKED_DIORITE_BRICKS = new BlockEntry<>("cracked_diorite_bricks", () -> BlockBehaviour.Properties.copy(Blocks.CRACKED_STONE_BRICKS), Block::new, SFBlocks::toItem);
+		public static final DecorBlockEntry CRACKED_DIORITE_BRICKS = new DecorBlockEntry("cracked_diorite_bricks", () -> BlockBehaviour.Properties.copy(Blocks.CRACKED_STONE_BRICKS), SFBlocks::toItem);
 
 		public static final DecorBlockEntry GRANITE_BRICKS = new DecorBlockEntry("granite_bricks", () -> BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS), SFBlocks::toItem);
 		public static final DecorBlockEntry MOSSY_GRANITE_BRICKS = new DecorBlockEntry("mossy_granite_bricks", () -> BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS), SFBlocks::toItem);
 		public static final BlockEntry<Block> CHISELED_GRANITE_BRICKS = new BlockEntry<>("chiseled_granite_bricks", () -> BlockBehaviour.Properties.copy(Blocks.CHISELED_STONE_BRICKS), Block::new, SFBlocks::toItem);
-		public static final BlockEntry<Block> CRACKED_GRANITE_BRICKS = new BlockEntry<>("cracked_granite_bricks", () -> BlockBehaviour.Properties.copy(Blocks.CRACKED_STONE_BRICKS), Block::new, SFBlocks::toItem);
+		public static final DecorBlockEntry CRACKED_GRANITE_BRICKS = new DecorBlockEntry("cracked_granite_bricks", () -> BlockBehaviour.Properties.copy(Blocks.CRACKED_STONE_BRICKS), SFBlocks::toItem);
 
 		private Igneous() {
+		}
+
+		private static void init() {
+		}
+	}
+
+	public static final class Stone {
+		public static final DecorBlockEntry CRACKED_STONE_BRICKS = new DecorBlockEntry(Blocks.CRACKED_STONE_BRICKS, SFBlocks::toItem);
+		public static final DecorBlockEntry CRACKED_DEEPSLATE_BRICKS = new DecorBlockEntry(Blocks.CRACKED_DEEPSLATE_BRICKS, SFBlocks::toItem);
+		public static final DecorBlockEntry CRACKED_DEEPSLATE_TILES = new DecorBlockEntry(Blocks.CRACKED_DEEPSLATE_TILES, SFBlocks::toItem);
+		public static final DecorBlockEntry CRACKED_NETHER_BRICKS = new DecorBlockEntry(Blocks.CRACKED_NETHER_BRICKS, SFBlocks::toItem);
+		public static final DecorBlockEntry CRACKED_POLISHED_BLACKSTONE_BRICKS = new DecorBlockEntry(Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS, SFBlocks::toItem);
+
+		private Stone() {
 		}
 
 		private static void init() {
@@ -50,6 +65,7 @@ public final class SFBlocks {
 		REGISTER.register(bus);
 
 		Igneous.init();
+		Stone.init();
 	}
 
 	public static <T extends Block> BlockItem toItem(T block) {
@@ -117,6 +133,8 @@ public final class SFBlocks {
 				name = name.replaceAll("_block", postfix);
 			} else if(name.endsWith("_bricks")) {
 				name = name.replaceAll("_bricks", "_brick" + postfix);
+			} else if(name.endsWith("_tiles")) {
+				name = name.replaceAll("_tiles", "_tile" + postfix);
 			} else if(name.endsWith("_planks")) {
 				name = name.replaceAll("_planks", postfix);
 			} else {
@@ -143,6 +161,26 @@ public final class SFBlocks {
 			this(name, properties);
 
 			SFItems.ItemEntry.register(name, () -> toItem.apply(this.full.get()));
+			SFItems.ItemEntry.register(changeNameTo(name, "_stairs"), () -> toItem.apply(this.stairs.get()));
+			SFItems.ItemEntry.register(changeNameTo(name, "_slab"), () -> toItem.apply(this.slab.get()));
+			SFItems.ItemEntry.register(changeNameTo(name, "_wall"), () -> toItem.apply(this.wall.get()));
+		}
+
+		public DecorBlockEntry(Block full, Function<Block, Item> toItem) {
+			ResourceLocation fullId = getRegistryName(full);
+			String name = fullId.getPath();
+			this.properties = () -> BlockBehaviour.Properties.copy(full);
+			this.full = RegistryObject.create(fullId, ForgeRegistries.BLOCKS);
+			this.stairs = REGISTER.register(changeNameTo(name, "_stairs"), () -> new StairBlock(this.full.get()::defaultBlockState, properties.get()));
+			this.slab = REGISTER.register(changeNameTo(name, "_slab"), () -> new SlabBlock(
+					properties.get()
+							.isSuffocating((state, level, pos) ->
+									this.full.get().defaultBlockState().isSuffocating(level, pos) && state.getValue(SlabBlock.TYPE) == SlabType.DOUBLE)
+							.isRedstoneConductor((state, level, pos) ->
+									this.full.get().defaultBlockState().isRedstoneConductor(level, pos) && state.getValue(SlabBlock.TYPE) == SlabType.DOUBLE)
+			));
+			this.wall = REGISTER.register(changeNameTo(name, "_wall"), () -> new WallBlock(properties.get()));
+
 			SFItems.ItemEntry.register(changeNameTo(name, "_stairs"), () -> toItem.apply(this.stairs.get()));
 			SFItems.ItemEntry.register(changeNameTo(name, "_slab"), () -> toItem.apply(this.slab.get()));
 			SFItems.ItemEntry.register(changeNameTo(name, "_wall"), () -> toItem.apply(this.wall.get()));
@@ -189,6 +227,14 @@ public final class SFBlocks {
 				Pair.of(group1.getStairsBlock().get(), group2.getStairsBlock().get()),
 				Pair.of(group1.getSlabBlock().get(), group2.getSlabBlock().get()),
 				Pair.of(group1.getWallBlock().get(), group2.getWallBlock().get())
+		);
+	}
+
+	public static Iterable<Pair<Block, Block>> paired(Block stairs, Block slab, Block wall, IDecorGroup group) {
+		return ImmutableList.of(
+				Pair.of(stairs, group.getStairsBlock().get()),
+				Pair.of(slab, group.getSlabBlock().get()),
+				Pair.of(wall, group.getWallBlock().get())
 		);
 	}
 

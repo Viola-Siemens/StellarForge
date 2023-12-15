@@ -14,6 +14,9 @@
   "block.stellarforge.mossy_andesite_brick_slab": "Mossy Andesite Brick Slab",
   "block.stellarforge.mossy_andesite_brick_wall": "Mossy Andesite Brick Wall",
   "block.stellarforge.cracked_andesite_bricks": "Cracked Andesite Bricks",
+  "block.stellarforge.cracked_andesite_brick_stairs": "Cracked Andesite Brick Stairs",
+  "block.stellarforge.cracked_andesite_brick_slab": "Cracked Andesite Brick Slab",
+  "block.stellarforge.cracked_andesite_brick_wall": "Cracked Andesite Brick Wall",
   "block.stellarforge.chiseled_andesite_bricks": "Chiseled Andesite Bricks",
   "block.stellarforge.diorite_bricks": "Diorite Bricks",
   "block.stellarforge.diorite_brick_stairs": "Diorite Brick Stairs",
@@ -24,6 +27,9 @@
   "block.stellarforge.mossy_diorite_brick_slab": "Mossy Diorite Brick Slab",
   "block.stellarforge.mossy_diorite_brick_wall": "Mossy Diorite Brick Wall",
   "block.stellarforge.cracked_diorite_bricks": "Cracked Diorite Bricks",
+  "block.stellarforge.cracked_diorite_brick_stairs": "Cracked Diorite Brick Stairs",
+  "block.stellarforge.cracked_diorite_brick_slab": "Cracked Diorite Brick Slab",
+  "block.stellarforge.cracked_diorite_brick_wall": "Cracked Diorite Brick Wall",
   "block.stellarforge.chiseled_diorite_bricks": "Chiseled Diorite Bricks",
   "block.stellarforge.granite_bricks": "Granite Bricks",
   "block.stellarforge.granite_brick_stairs": "Granite Brick Stairs",
@@ -34,5 +40,12 @@
   "block.stellarforge.mossy_granite_brick_slab": "Mossy Granite Brick Slab",
   "block.stellarforge.mossy_granite_brick_wall": "Mossy Granite Brick Wall",
   "block.stellarforge.cracked_granite_bricks": "Cracked Granite Bricks",
-  "block.stellarforge.chiseled_granite_bricks": "Chiseled Granite Bricks"
+  "block.stellarforge.cracked_granite_brick_stairs": "Cracked Granite Brick Stairs",
+  "block.stellarforge.cracked_granite_brick_slab": "Cracked Granite Brick Slab",
+  "block.stellarforge.cracked_granite_brick_wall": "Cracked Granite Brick Wall",
+  "block.stellarforge.chiseled_granite_bricks": "Chiseled Granite Bricks",
+
+  "block.stellarforge.cracked_stone_brick_stairs": "Cracked Stone Brick Stairs",
+  "block.stellarforge.cracked_stone_brick_slab": "Cracked Stone Brick Slab",
+  "block.stellarforge.cracked_stone_brick_wall": "Cracked Stone Brick Wall"
 }
