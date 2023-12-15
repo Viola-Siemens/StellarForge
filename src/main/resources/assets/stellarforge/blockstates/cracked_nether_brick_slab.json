@@ -1,13 +1,13 @@
 {
   "variants": {
     "type=bottom": {
-      "model": "stellarforge:block/stone/cracked_nether_brick_slab"
+      "model": "stellarforge:block/bricks/cracked_nether_brick_slab"
     },
     "type=double": {
       "model": "minecraft:block/cracked_nether_bricks"
     },
     "type=top": {
-      "model": "stellarforge:block/stone/cracked_nether_brick_slab_top"
+      "model": "stellarforge:block/bricks/cracked_nether_brick_slab_top"
     }
   }
 }
