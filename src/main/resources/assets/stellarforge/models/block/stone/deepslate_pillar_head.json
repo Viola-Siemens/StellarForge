@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "stellarforge:block/deepslate_pillar_top",
+    "side": "stellarforge:block/deepslate_pillar_head"
+  }
+}

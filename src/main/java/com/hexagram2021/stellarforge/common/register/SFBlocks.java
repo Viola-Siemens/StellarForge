@@ -60,11 +60,13 @@ public final class SFBlocks {
 	}
 
 	public static final class Stone {
+		//vanilla
 		public static final DecorBlockEntry CRACKED_STONE_BRICKS = new DecorBlockEntry(Blocks.CRACKED_STONE_BRICKS, SFBlocks::toItem);
 		public static final DecorBlockEntry CRACKED_DEEPSLATE_BRICKS = new DecorBlockEntry(Blocks.CRACKED_DEEPSLATE_BRICKS, SFBlocks::toItem);
 		public static final DecorBlockEntry CRACKED_DEEPSLATE_TILES = new DecorBlockEntry(Blocks.CRACKED_DEEPSLATE_TILES, SFBlocks::toItem);
 		public static final DecorBlockEntry CRACKED_POLISHED_BLACKSTONE_BRICKS = new DecorBlockEntry(Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS, SFBlocks::toItem);
 
+		//blackstone
 		public static final DecorBlockEntry COBBLED_BLACKSTONE = new DecorBlockEntry("cobbled_blackstone", () -> BlockBehaviour.Properties.copy(Blocks.BLACKSTONE), SFBlocks::toItem);
 		public static final DecorBlockEntry MOSSY_COBBLED_BLACKSTONE = new DecorBlockEntry("mossy_cobbled_blackstone", () -> BlockBehaviour.Properties.copy(Blocks.BLACKSTONE), SFBlocks::toItem);
 		public static final DecorBlockEntry SMOOTH_BLACKSTONE = new DecorBlockEntry("smooth_blackstone", () -> BlockBehaviour.Properties.copy(Blocks.BLACKSTONE), SFBlocks::toItem);
@@ -76,6 +78,12 @@ public final class SFBlocks {
 		public static final DecorBlockEntry CRACKED_POLISHED_BLACKSTONE_TILES = new DecorBlockEntry("cracked_polished_blackstone_tiles", () -> BlockBehaviour.Properties.copy(Blocks.POLISHED_BLACKSTONE_BRICKS), SFBlocks::toItem);
 		public static final DecorBlockEntry MOSSY_POLISHED_BLACKSTONE_BRICKS = new DecorBlockEntry("mossy_polished_blackstone_bricks", () -> BlockBehaviour.Properties.copy(Blocks.POLISHED_BLACKSTONE_BRICKS), SFBlocks::toItem);
 		public static final DecorBlockEntry MOSSY_POLISHED_BLACKSTONE_TILES = new DecorBlockEntry("mossy_polished_blackstone_tiles", () -> BlockBehaviour.Properties.copy(Blocks.POLISHED_BLACKSTONE_BRICKS), SFBlocks::toItem);
+
+		//stone
+		public static final BlockEntry<PillarBlock> STONE_PILLAR = new BlockEntry<>("stone_pillar", () -> BlockBehaviour.Properties.copy(Blocks.STONE), PillarBlock::new, SFBlocks::toItem);
+
+		//deepslate
+		public static final BlockEntry<PillarBlock> DEEPSLATE_PILLAR = new BlockEntry<>("deepslate_pillar", () -> BlockBehaviour.Properties.copy(Blocks.DEEPSLATE), PillarBlock::new, SFBlocks::toItem);
 
 		private Stone() {
 		}

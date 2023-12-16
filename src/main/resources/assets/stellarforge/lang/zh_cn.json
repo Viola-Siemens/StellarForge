@@ -91,5 +91,8 @@
   "block.stellarforge.mossy_polished_blackstone_tiles": "苔磨制黑石瓦",
   "block.stellarforge.mossy_polished_blackstone_tile_stairs": "苔磨制黑石瓦楼梯",
   "block.stellarforge.mossy_polished_blackstone_tile_slab": "苔磨制黑石瓦台阶",
-  "block.stellarforge.mossy_polished_blackstone_tile_wall": "苔磨制黑石瓦墙"
+  "block.stellarforge.mossy_polished_blackstone_tile_wall": "苔磨制黑石瓦墙",
+
+  "block.stellarforge.stone_pillar": "石柱",
+  "block.stellarforge.deepslate_pillar": "深板岩柱"
 }

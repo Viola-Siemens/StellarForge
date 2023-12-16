@@ -40,7 +40,7 @@ public class PillarBlock extends RotatedPillarBlock {
 
 		if(delta != null && axis.test(delta)) {
 			Direction.AxisDirection axisDirection = delta.getAxisDirection();
-			BooleanProperty effected = axisDirection.getStep() > 0 ?  HEEL : HEAD;
+			BooleanProperty effected = axisDirection.getStep() > 0 ? HEEL : HEAD;
 			BlockState neighborState = level.getBlockState(neighborPos);
 			boolean flag = neighborState.getBlock() == this && neighborState.hasProperty(AXIS) && neighborState.getValue(AXIS) == axis;
 			if(blockState.getValue(effected) == flag) {

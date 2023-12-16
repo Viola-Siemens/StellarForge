@@ -91,5 +91,8 @@
   "block.stellarforge.mossy_polished_blackstone_tiles": "Mossy Polished Blackstone Tiles",
   "block.stellarforge.mossy_polished_blackstone_tile_stairs": "Mossy Polished Blackstone Tile Stairs",
   "block.stellarforge.mossy_polished_blackstone_tile_slab": "Mossy Polished Blackstone Tile Slab",
-  "block.stellarforge.mossy_polished_blackstone_tile_wall": "Mossy Polished Blackstone Tile Wall"
+  "block.stellarforge.mossy_polished_blackstone_tile_wall": "Mossy Polished Blackstone Tile Wall",
+
+  "block.stellarforge.stone_pillar": "Stone Pillar",
+  "block.stellarforge.deepslate_pillar": "Deepslate Pillar"
 }

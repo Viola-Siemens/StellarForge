@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "axis=x,head=true,heel=true": {
+      "model": "stellarforge:block/stone/deepslate_pillar_horizontal_full",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,head=true,heel=false": {
+      "model": "stellarforge:block/stone/deepslate_pillar_horizontal_head",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,head=false,heel=true": {
+      "model": "stellarforge:block/stone/deepslate_pillar_horizontal_heel",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,head=false,heel=false": {
+      "model": "stellarforge:block/stone/deepslate_pillar_horizontal_body",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y,head=true,heel=true": {
+      "model": "stellarforge:block/stone/deepslate_pillar_full"
+    },
+    "axis=y,head=true,heel=false": {
+      "model": "stellarforge:block/stone/deepslate_pillar_head"
+    },
+    "axis=y,head=false,heel=true": {
+      "model": "stellarforge:block/stone/deepslate_pillar_heel"
+    },
+    "axis=y,head=false,heel=false": {
+      "model": "stellarforge:block/stone/deepslate_pillar_body"
+    },
+    "axis=z,head=true,heel=true": {
+      "model": "stellarforge:block/stone/deepslate_pillar_horizontal_full",
+      "x": 90
+    },
+    "axis=z,head=true,heel=false": {
+      "model": "stellarforge:block/stone/deepslate_pillar_horizontal_head",
+      "x": -90
+    },
+    "axis=z,head=false,heel=true": {
+      "model": "stellarforge:block/stone/deepslate_pillar_horizontal_heel",
+      "x": -90
+    },
+    "axis=z,head=false,heel=false": {
+      "model": "stellarforge:block/stone/deepslate_pillar_horizontal_body",
+      "x": -90
+    }
+  }
+}
