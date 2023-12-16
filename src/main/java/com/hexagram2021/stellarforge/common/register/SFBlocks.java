@@ -26,8 +26,10 @@ public final class SFBlocks {
 	public static final DeferredRegister<Block> REGISTER = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
 
 	public static final class Bricks {
+		public static final DecorBlockEntry MOSSY_BRICKS = new DecorBlockEntry("mossy_bricks", () -> BlockBehaviour.Properties.copy(Blocks.BRICKS), SFBlocks::toItem);
+		public static final DecorBlockEntry CRACKED_BRICKS = new DecorBlockEntry("cracked_bricks", () -> BlockBehaviour.Properties.copy(Blocks.BRICKS), SFBlocks::toItem);
+		public static final BlockEntry<Block> CHISELED_BRICKS = new BlockEntry<>("chiseled_bricks", () -> BlockBehaviour.Properties.copy(Blocks.BRICKS), Block::new, SFBlocks::toItem);
 		public static final DecorBlockEntry CRACKED_NETHER_BRICKS = new DecorBlockEntry(Blocks.CRACKED_NETHER_BRICKS, SFBlocks::toItem);
-
 
 		private Bricks() {
 		}

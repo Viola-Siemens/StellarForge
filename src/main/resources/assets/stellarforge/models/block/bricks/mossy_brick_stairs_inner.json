@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "stellarforge:block/mossy_bricks",
+    "side": "stellarforge:block/mossy_bricks",
+    "top": "stellarforge:block/mossy_bricks"
+  }
+}

@@ -5,6 +5,19 @@
   
   "itemGroup.stellarforge": "星辰铸造",
 
+  "block.stellarforge.mossy_bricks": "苔红砖",
+  "block.stellarforge.mossy_brick_stairs": "苔红砖楼梯",
+  "block.stellarforge.mossy_brick_slab": "苔红砖台阶",
+  "block.stellarforge.mossy_brick_wall": "苔红砖墙",
+  "block.stellarforge.cracked_bricks": "裂纹红砖",
+  "block.stellarforge.cracked_brick_stairs": "裂纹红砖楼梯",
+  "block.stellarforge.cracked_brick_slab": "裂纹红砖台阶",
+  "block.stellarforge.cracked_brick_wall": "裂纹红砖墙",
+  "block.stellarforge.chiseled_bricks": "雕纹红砖",
+  "block.stellarforge.cracked_nether_brick_stairs": "裂纹下界砖楼梯",
+  "block.stellarforge.cracked_nether_brick_slab": "裂纹下界砖台阶",
+  "block.stellarforge.cracked_nether_brick_wall": "裂纹下界砖墙",
+
   "block.stellarforge.andesite_bricks": "安山岩砖",
   "block.stellarforge.andesite_brick_stairs": "安山岩砖楼梯",
   "block.stellarforge.andesite_brick_slab": "安山岩砖台阶",
@@ -44,10 +57,6 @@
   "block.stellarforge.cracked_granite_brick_slab": "裂纹花岗岩砖台阶",
   "block.stellarforge.cracked_granite_brick_wall": "裂纹花岗岩砖墙",
   "block.stellarforge.chiseled_granite_bricks": "雕纹花岗岩砖",
-
-  "block.stellarforge.cracked_nether_brick_stairs": "裂纹下界砖楼梯",
-  "block.stellarforge.cracked_nether_brick_slab": "裂纹下界砖台阶",
-  "block.stellarforge.cracked_nether_brick_wall": "裂纹下界砖墙",
   "block.stellarforge.cracked_deepslate_brick_stairs": "裂纹深板岩砖楼梯",
   "block.stellarforge.cracked_deepslate_brick_slab": "裂纹深板岩砖台阶",
   "block.stellarforge.cracked_deepslate_brick_wall": "裂纹深板岩砖墙",

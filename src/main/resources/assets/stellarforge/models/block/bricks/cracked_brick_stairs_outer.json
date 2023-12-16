@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "stellarforge:block/cracked_bricks",
+    "side": "stellarforge:block/cracked_bricks",
+    "top": "stellarforge:block/cracked_bricks"
+  }
+}
