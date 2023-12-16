@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "stellarforge:block/polished_blackstone_pillar_top",
+    "side": "stellarforge:block/polished_blackstone_pillar_head"
+  }
+}

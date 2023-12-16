@@ -33,6 +33,12 @@ public final class ForgeEventHandler {
 		if(tryTransfer(state, SFBlocks.Stone.COBBLED_BLACKSTONE, SFBlocks.Stone.MOSSY_COBBLED_BLACKSTONE, event::setTarget)) {
 			return;
 		}
+		if(tryTransfer(state, Blocks.POLISHED_BLACKSTONE_BRICKS, Blocks.POLISHED_BLACKSTONE_BRICK_STAIRS, Blocks.POLISHED_BLACKSTONE_BRICK_SLAB, Blocks.POLISHED_BLACKSTONE_BRICK_WALL, SFBlocks.Stone.MOSSY_POLISHED_BLACKSTONE_BRICKS, event::setTarget)) {
+			return;
+		}
+		if(tryTransfer(state, SFBlocks.Stone.POLISHED_BLACKSTONE_TILES, SFBlocks.Stone.MOSSY_POLISHED_BLACKSTONE_TILES, event::setTarget)) {
+			return;
+		}
 	}
 	@SuppressWarnings("UnnecessaryReturnStatement")
 	@SubscribeEvent
@@ -67,6 +73,9 @@ public final class ForgeEventHandler {
 		if(tryTransfer(state, Blocks.POLISHED_BLACKSTONE_BRICK_STAIRS, Blocks.POLISHED_BLACKSTONE_BRICK_SLAB, Blocks.POLISHED_BLACKSTONE_BRICK_WALL, SFBlocks.Stone.CRACKED_POLISHED_BLACKSTONE_BRICKS, event::setTarget)) {
 			return;
 		}
+		if(tryTransfer(state, SFBlocks.Stone.POLISHED_BLACKSTONE_TILES, SFBlocks.Stone.CRACKED_POLISHED_BLACKSTONE_TILES, event::setTarget)) {
+			return;
+		}
 	}
 
 	private static boolean tryTransfer(BlockState state, SFBlocks.IDecorGroup group1, SFBlocks.IDecorGroup group2, Consumer<BlockState> setTarget) {
@@ -78,9 +87,17 @@ public final class ForgeEventHandler {
 		}
 		return false;
 	}
-
 	private static boolean tryTransfer(BlockState state, Block stairs, Block slab, Block wall, SFBlocks.IDecorGroup group, Consumer<BlockState> setTarget) {
 		for(Pair<Block, Block> trans: SFBlocks.paired(stairs, slab, wall, group)) {
+			if(state.is(trans.getKey())) {
+				setTarget.accept(trans.getValue().withPropertiesOf(state));
+				return true;
+			}
+		}
+		return false;
+	}
+	private static boolean tryTransfer(BlockState state, Block full, Block stairs, Block slab, Block wall, SFBlocks.IDecorGroup group, Consumer<BlockState> setTarget) {
+		for(Pair<Block, Block> trans: SFBlocks.paired(full, stairs, slab, wall, group)) {
 			if(state.is(trans.getKey())) {
 				setTarget.accept(trans.getValue().withPropertiesOf(state));
 				return true;

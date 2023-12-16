@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "stellarforge:block/mossy_polished_blackstone_tiles",
+    "side": "stellarforge:block/mossy_polished_blackstone_tiles",
+    "top": "stellarforge:block/mossy_polished_blackstone_tiles"
+  }
+}

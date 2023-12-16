@@ -1,6 +1,7 @@
 package com.hexagram2021.stellarforge.common.register;
 
 import com.google.common.collect.ImmutableList;
+import com.hexagram2021.stellarforge.common.block.PillarBlock;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -67,6 +68,14 @@ public final class SFBlocks {
 		public static final DecorBlockEntry COBBLED_BLACKSTONE = new DecorBlockEntry("cobbled_blackstone", () -> BlockBehaviour.Properties.copy(Blocks.BLACKSTONE), SFBlocks::toItem);
 		public static final DecorBlockEntry MOSSY_COBBLED_BLACKSTONE = new DecorBlockEntry("mossy_cobbled_blackstone", () -> BlockBehaviour.Properties.copy(Blocks.BLACKSTONE), SFBlocks::toItem);
 		public static final DecorBlockEntry SMOOTH_BLACKSTONE = new DecorBlockEntry("smooth_blackstone", () -> BlockBehaviour.Properties.copy(Blocks.BLACKSTONE), SFBlocks::toItem);
+		public static final BlockEntry<PillarBlock> POLISHED_BLACKSTONE_PILLAR = new BlockEntry<>("polished_blackstone_pillar", () -> BlockBehaviour.Properties.copy(Blocks.BLACKSTONE), PillarBlock::new, SFBlocks::toItem);
+		public static final BlockEntry<Block> CHISELED_BLACKSTONE = new BlockEntry<>("chiseled_blackstone", () -> BlockBehaviour.Properties.copy(Blocks.BLACKSTONE), Block::new, SFBlocks::toItem);
+		public static final BlockEntry<Block> CHISELED_POLISHED_BLACKSTONE_BRICKS = new BlockEntry<>("chiseled_polished_blackstone_bricks", () -> BlockBehaviour.Properties.copy(Blocks.POLISHED_BLACKSTONE_BRICKS), Block::new, SFBlocks::toItem);
+		public static final BlockEntry<Block> CHISELED_POLISHED_BLACKSTONE_TILES = new BlockEntry<>("chiseled_polished_blackstone_tiles", () -> BlockBehaviour.Properties.copy(Blocks.POLISHED_BLACKSTONE_BRICKS), Block::new, SFBlocks::toItem);
+		public static final DecorBlockEntry POLISHED_BLACKSTONE_TILES = new DecorBlockEntry("polished_blackstone_tiles", () -> BlockBehaviour.Properties.copy(Blocks.POLISHED_BLACKSTONE_BRICKS), SFBlocks::toItem);
+		public static final DecorBlockEntry CRACKED_POLISHED_BLACKSTONE_TILES = new DecorBlockEntry("cracked_polished_blackstone_tiles", () -> BlockBehaviour.Properties.copy(Blocks.POLISHED_BLACKSTONE_BRICKS), SFBlocks::toItem);
+		public static final DecorBlockEntry MOSSY_POLISHED_BLACKSTONE_BRICKS = new DecorBlockEntry("mossy_polished_blackstone_bricks", () -> BlockBehaviour.Properties.copy(Blocks.POLISHED_BLACKSTONE_BRICKS), SFBlocks::toItem);
+		public static final DecorBlockEntry MOSSY_POLISHED_BLACKSTONE_TILES = new DecorBlockEntry("mossy_polished_blackstone_tiles", () -> BlockBehaviour.Properties.copy(Blocks.POLISHED_BLACKSTONE_BRICKS), SFBlocks::toItem);
 
 		private Stone() {
 		}
@@ -244,9 +253,16 @@ public final class SFBlocks {
 				Pair.of(group1.getWallBlock().get(), group2.getWallBlock().get())
 		);
 	}
-
 	public static Iterable<Pair<Block, Block>> paired(Block stairs, Block slab, Block wall, IDecorGroup group) {
 		return ImmutableList.of(
+				Pair.of(stairs, group.getStairsBlock().get()),
+				Pair.of(slab, group.getSlabBlock().get()),
+				Pair.of(wall, group.getWallBlock().get())
+		);
+	}
+	public static Iterable<Pair<Block, Block>> paired(Block full, Block stairs, Block slab, Block wall, IDecorGroup group) {
+		return ImmutableList.of(
+				Pair.of(full, group.getFullBlock().get()),
 				Pair.of(stairs, group.getStairsBlock().get()),
 				Pair.of(slab, group.getSlabBlock().get()),
 				Pair.of(wall, group.getWallBlock().get())

@@ -18,6 +18,10 @@
     "stellarforge:cracked_polished_blackstone_brick_slab",
     "stellarforge:cobbled_blackstone_slab",
     "stellarforge:mossy_cobbled_blackstone_slab",
-    "stellarforge:smooth_blackstone_slab"
+    "stellarforge:smooth_blackstone_slab",
+    "stellarforge:polished_blackstone_tile_slab",
+    "stellarforge:cracked_polished_blackstone_tile_slab",
+    "stellarforge:mossy_polished_blackstone_brick_slab",
+    "stellarforge:mossy_polished_blackstone_tile_slab"
   ]
 }

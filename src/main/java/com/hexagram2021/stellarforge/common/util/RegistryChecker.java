@@ -81,15 +81,49 @@ public interface RegistryChecker {
 					() -> tagCheckSuffix(id, block, blockItem, "_terracotta", BlockTags.TERRACOTTA, ItemTags.TERRACOTTA)
 			);
 
-			if(block.defaultBlockState().requiresCorrectToolForDrops()) {
-				checkIn(id, block, "mineable", BlockTags.MINEABLE_WITH_AXE, BlockTags.MINEABLE_WITH_HOE, BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.MINEABLE_WITH_SHOVEL);
-			}
+			tagCheckSubstr(id, block, blockItem, "gold", BlockTags.GUARDED_BY_PIGLINS, ItemTags.PIGLIN_LOVED);
 
-			if(!WHITELIST_NO_LOOT_TABLE_BLOCKS.contains(block) &&
-					(block.getLootTable().equals(BuiltInLootTables.EMPTY) || lootDataManager.getLootTable(block.getLootTable()).equals(LootTable.EMPTY))) {
-				SFLogger.warn("[Registry Check] Missing loot table for block %s.".formatted(id));
+			if(!WHITELIST_NO_LOOT_TABLE_BLOCKS.contains(block)) {
+				if((block.getLootTable().equals(BuiltInLootTables.EMPTY) || lootDataManager.getLootTable(block.getLootTable()).equals(LootTable.EMPTY))) {
+					SFLogger.warn("[Registry Check] Missing loot table for block %s.".formatted(id));
+				}
+				if(block.defaultBlockState().requiresCorrectToolForDrops()) {
+					checkIn(id, block, "mineable", BlockTags.MINEABLE_WITH_AXE, BlockTags.MINEABLE_WITH_HOE, BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.MINEABLE_WITH_SHOVEL);
+				}
 			}
 		});
+	}
+
+	static CheckResult tagCheckSubstr(ResourceLocation id, String substr) {
+		return new CheckResult(id.getPath().contains(substr));
+	}
+	static CheckResult tagCheckSubstr(ResourceLocation id, Block block, Item blockItem, String substr, TagKey<Block> blockTag, TagKey<Item> itemTag) {
+		if(id.getPath().contains(substr)) {
+			boolean error = false;
+			substr = substr.replace('_', ' ');
+			if(!block.builtInRegistryHolder().is(blockTag)) {
+				SFLogger.warn("[Registry Check] Likely %s block %s is not in tag %s.".formatted(substr, id, blockTag));
+				error = true;
+			}
+			if(!blockItem.builtInRegistryHolder().is(itemTag)) {
+				SFLogger.warn("[Registry Check] Likely %s item %s is not in tag %s.".formatted(substr, id, itemTag));
+				error = true;
+			}
+			return new CheckResult(true, error);
+		}
+		return new CheckResult(false);
+	}
+	static CheckResult tagCheckSubstr(ResourceLocation id, Block block, String substr, TagKey<Block> blockTag) {
+		if(id.getPath().contains(substr)) {
+			boolean error = false;
+			substr = substr.replace('_', ' ');
+			if(!block.builtInRegistryHolder().is(blockTag)) {
+				SFLogger.warn("[Registry Check] Likely %s block %s is not in tag %s.".formatted(substr, id, blockTag));
+				error = true;
+			}
+			return new CheckResult(true, error);
+		}
+		return new CheckResult(false);
 	}
 
 	static CheckResult tagCheckSuffix(ResourceLocation id, String suffix) {
@@ -123,6 +157,7 @@ public interface RegistryChecker {
 		}
 		return new CheckResult(false);
 	}
+
 	static CheckResult tagCheckPrefix(ResourceLocation id, String prefix) {
 		return new CheckResult(id.getPath().startsWith(prefix));
 	}

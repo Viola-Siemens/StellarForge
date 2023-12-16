@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_wall_side_tall",
+  "textures": {
+    "wall": "stellarforge:block/mossy_polished_blackstone_tiles"
+  }
+}
