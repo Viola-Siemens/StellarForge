@@ -4,7 +4,7 @@
       "model": "stellarforge:block/stone/deepslate_slab"
     },
     "type=double": {
-      "model": "stellarforge:block/stone/deepslate"
+      "model": "minecraft:block/deepslate"
     },
     "type=top": {
       "model": "stellarforge:block/stone/deepslate_slab_top"

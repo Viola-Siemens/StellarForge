@@ -47,6 +47,15 @@ public final class ForgeEventHandler {
 		if(tryTransfer(state, Blocks.COBBLED_DEEPSLATE, Blocks.COBBLED_DEEPSLATE_STAIRS, Blocks.COBBLED_DEEPSLATE_SLAB, Blocks.COBBLED_DEEPSLATE_WALL, SFBlocks.Stone.MOSSY_COBBLED_DEEPSLATE, event::setTarget)) {
 			return;
 		}
+		if(tryTransfer(state, SFBlocks.Stone.STONE_TILES, SFBlocks.Stone.MOSSY_STONE_TILES, event::setTarget)) {
+			return;
+		}
+		if(tryTransfer(state, Blocks.DEEPSLATE_BRICKS, Blocks.DEEPSLATE_BRICK_STAIRS, Blocks.DEEPSLATE_BRICK_SLAB, Blocks.DEEPSLATE_BRICK_WALL, SFBlocks.Stone.MOSSY_DEEPSLATE_BRICKS, event::setTarget)) {
+			return;
+		}
+		if(tryTransfer(state, Blocks.DEEPSLATE_TILES, Blocks.DEEPSLATE_TILE_STAIRS, Blocks.DEEPSLATE_TILE_SLAB, Blocks.DEEPSLATE_TILE_WALL, SFBlocks.Stone.MOSSY_DEEPSLATE_TILES, event::setTarget)) {
+			return;
+		}
 	}
 	@SubscribeEvent
 	public static void onCrackBlock(CrackBlockEvent event) {
@@ -84,6 +93,9 @@ public final class ForgeEventHandler {
 			return;
 		}
 		if(tryTransfer(state, SFBlocks.Stone.POLISHED_BLACKSTONE_TILES, SFBlocks.Stone.CRACKED_POLISHED_BLACKSTONE_TILES, event::setTarget)) {
+			return;
+		}
+		if(tryTransfer(state, SFBlocks.Stone.STONE_TILES, SFBlocks.Stone.CRACKED_STONE_TILES, event::setTarget)) {
 			return;
 		}
 	}

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "stellarforge:block/stone/stone_tiles"
+    }
+  }
+}

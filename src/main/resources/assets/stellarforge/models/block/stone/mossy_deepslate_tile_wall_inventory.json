@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "stellarforge:block/mossy_deepslate_tiles"
+  }
+}
