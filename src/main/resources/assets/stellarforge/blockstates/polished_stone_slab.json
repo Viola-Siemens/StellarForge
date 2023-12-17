@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "stellarforge:block/stone/polished_stone_slab"
+    },
+    "type=double": {
+      "model": "stellarforge:block/stone/polished_stone"
+    },
+    "type=top": {
+      "model": "stellarforge:block/stone/polished_stone_slab_top"
+    }
+  }
+}

@@ -5,5 +5,8 @@
   "refmap": "stellarforge.refmap.json",
   "minVersion": "0.8",
   "mixins": [
+  ],
+  "client": [
+    "I18nMixin"
   ]
 }

@@ -1,6 +1,7 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/cube_column",
   "textures": {
-    "all": "stellarforge:block/chiseled_blackstone"
+    "end": "minecraft:block/blackstone_top",
+    "side": "stellarforge:block/chiseled_blackstone"
   }
 }

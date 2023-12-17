@@ -1,7 +1,9 @@
 package com.hexagram2021.stellarforge.common;
 
+import com.hexagram2021.stellarforge.api.events.ChiselBlockEvent;
 import com.hexagram2021.stellarforge.api.events.CrackBlockEvent;
 import com.hexagram2021.stellarforge.api.events.MossifyBlockEvent;
+import com.hexagram2021.stellarforge.api.events.SmoothBlockEvent;
 import com.hexagram2021.stellarforge.common.register.SFBlocks;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -14,9 +16,9 @@ import java.util.function.Consumer;
 
 import static com.hexagram2021.stellarforge.StellarForge.MODID;
 
+@SuppressWarnings("UnnecessaryReturnStatement")
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE, modid = MODID)
 public final class ForgeEventHandler {
-	@SuppressWarnings("UnnecessaryReturnStatement")
 	@SubscribeEvent
 	public static void onMossifyBlock(MossifyBlockEvent event) {
 		BlockState state = event.getState();
@@ -42,8 +44,10 @@ public final class ForgeEventHandler {
 		if(tryTransfer(state, SFBlocks.Stone.POLISHED_BLACKSTONE_TILES, SFBlocks.Stone.MOSSY_POLISHED_BLACKSTONE_TILES, event::setTarget)) {
 			return;
 		}
+		if(tryTransfer(state, Blocks.COBBLED_DEEPSLATE, Blocks.COBBLED_DEEPSLATE_STAIRS, Blocks.COBBLED_DEEPSLATE_SLAB, Blocks.COBBLED_DEEPSLATE_WALL, SFBlocks.Stone.MOSSY_COBBLED_DEEPSLATE, event::setTarget)) {
+			return;
+		}
 	}
-	@SuppressWarnings("UnnecessaryReturnStatement")
 	@SubscribeEvent
 	public static void onCrackBlock(CrackBlockEvent event) {
 		BlockState state = event.getState();
@@ -80,6 +84,45 @@ public final class ForgeEventHandler {
 			return;
 		}
 		if(tryTransfer(state, SFBlocks.Stone.POLISHED_BLACKSTONE_TILES, SFBlocks.Stone.CRACKED_POLISHED_BLACKSTONE_TILES, event::setTarget)) {
+			return;
+		}
+	}
+	@SubscribeEvent
+	public static void onChiselBlock(ChiselBlockEvent event) {
+		BlockState state = event.getState();
+		if(state.is(Blocks.BRICKS)) {
+			event.setTarget(SFBlocks.Bricks.CHISELED_BRICKS.defaultBlockState());
+		} else if(state.is(SFBlocks.Igneous.ANDESITE_BRICKS.getFullBlock().get())) {
+			event.setTarget(SFBlocks.Igneous.CHISELED_ANDESITE_BRICKS.defaultBlockState());
+		} else if(state.is(SFBlocks.Igneous.DIORITE_BRICKS.getFullBlock().get())) {
+			event.setTarget(SFBlocks.Igneous.CHISELED_DIORITE_BRICKS.defaultBlockState());
+		} else if(state.is(SFBlocks.Igneous.GRANITE_BRICKS.getFullBlock().get())) {
+			event.setTarget(SFBlocks.Igneous.CHISELED_GRANITE_BRICKS.defaultBlockState());
+		} else if(state.is(Blocks.BLACKSTONE)) {
+			event.setTarget(SFBlocks.Stone.CHISELED_BLACKSTONE.defaultBlockState());
+		} else if(state.is(Blocks.POLISHED_BLACKSTONE_BRICKS)) {
+			event.setTarget(SFBlocks.Stone.CHISELED_POLISHED_BLACKSTONE_BRICKS.defaultBlockState());
+		} else if(state.is(SFBlocks.Stone.POLISHED_BLACKSTONE_TILES.getFullBlock().get())) {
+			event.setTarget(SFBlocks.Stone.CHISELED_POLISHED_BLACKSTONE_TILES.defaultBlockState());
+		} else if(state.is(Blocks.STONE)) {
+			event.setTarget(SFBlocks.Stone.CHISELED_STONE.defaultBlockState());
+		} else if(state.is(SFBlocks.Stone.POLISHED_STONE.getFullBlock().get())) {
+			event.setTarget(SFBlocks.Stone.CHISELED_POLISHED_STONE.defaultBlockState());
+		} else if(state.is(Blocks.POLISHED_DEEPSLATE)) {
+			event.setTarget(SFBlocks.Stone.CHISELED_POLISHED_DEEPSLATE.defaultBlockState());
+		} else if(state.is(Blocks.DEEPSLATE_BRICKS)) {
+			event.setTarget(SFBlocks.Stone.CHISELED_DEEPSLATE_BRICKS.defaultBlockState());
+		} else if(state.is(Blocks.DEEPSLATE_TILES)) {
+			event.setTarget(SFBlocks.Stone.CHISELED_DEEPSLATE_TILES.defaultBlockState());
+		}
+	}
+	@SubscribeEvent
+	public static void onSmoothBlock(SmoothBlockEvent event) {
+		BlockState state = event.getState();
+		if(tryTransfer(state, Blocks.BLACKSTONE, Blocks.BLACKSTONE_STAIRS, Blocks.BLACKSTONE_SLAB, Blocks.BLACKSTONE_WALL, SFBlocks.Stone.SMOOTH_BLACKSTONE, event::setTarget)) {
+			return;
+		}
+		if(tryTransfer(state, SFBlocks.Stone.DEEPSLATE, SFBlocks.Stone.SMOOTH_DEEPSLATE, event::setTarget)) {
 			return;
 		}
 	}

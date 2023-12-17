@@ -57,6 +57,10 @@
   "block.stellarforge.cracked_granite_brick_slab": "裂纹花岗岩砖台阶",
   "block.stellarforge.cracked_granite_brick_wall": "裂纹花岗岩砖墙",
   "block.stellarforge.chiseled_granite_bricks": "雕纹花岗岩砖",
+
+  "block.stellarforge.deepslate_stairs": "深板岩楼梯",
+  "block.stellarforge.deepslate_slab": "深板岩台阶",
+  "block.stellarforge.deepslate_wall": "深板岩墙",
   "block.stellarforge.cracked_deepslate_brick_stairs": "裂纹深板岩砖楼梯",
   "block.stellarforge.cracked_deepslate_brick_slab": "裂纹深板岩砖台阶",
   "block.stellarforge.cracked_deepslate_brick_wall": "裂纹深板岩砖墙",
@@ -103,5 +107,22 @@
   "block.stellarforge.mossy_polished_blackstone_tile_wall": "苔磨制黑石瓦墙",
 
   "block.stellarforge.stone_pillar": "石柱",
-  "block.stellarforge.deepslate_pillar": "深板岩柱"
+  "block.stellarforge.chiseled_stone": "雕纹石头",
+  "block.stellarforge.polished_stone": "磨制石头",
+  "block.stellarforge.polished_stone_stairs": "磨制石楼梯",
+  "block.stellarforge.polished_stone_slab": "磨制石台阶",
+  "block.stellarforge.polished_stone_wall": "磨制石墙",
+  "block.stellarforge.chiseled_polished_stone": "雕纹磨制石头",
+  "block.stellarforge.deepslate_pillar": "深板岩柱",
+  "block.stellarforge.mossy_cobbled_deepslate": "苔深板岩圆石",
+  "block.stellarforge.mossy_cobbled_deepslate_stairs": "苔深板岩圆石楼梯",
+  "block.stellarforge.mossy_cobbled_deepslate_slab": "苔深板岩圆石台阶",
+  "block.stellarforge.mossy_cobbled_deepslate_wall": "苔深板岩圆石墙",
+  "block.stellarforge.smooth_deepslate": "平滑深板岩",
+  "block.stellarforge.smooth_deepslate_stairs": "平滑深板岩楼梯",
+  "block.stellarforge.smooth_deepslate_slab": "平滑深板岩台阶",
+  "block.stellarforge.smooth_deepslate_wall": "平滑深板岩墙",
+  "block.stellarforge.chiseled_polished_deepslate": "雕纹磨制深板岩",
+  "block.stellarforge.chiseled_deepslate_bricks": "雕纹深板岩砖",
+  "block.stellarforge.chiseled_deepslate_tiles": "雕纹深板岩瓦"
 }

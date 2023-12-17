@@ -1,8 +1,6 @@
 package com.hexagram2021.stellarforge.common.register;
 
-import com.hexagram2021.stellarforge.api.events.CrackBlockEvent;
-import com.hexagram2021.stellarforge.api.events.FreezeBlockEvent;
-import com.hexagram2021.stellarforge.api.events.MossifyBlockEvent;
+import com.hexagram2021.stellarforge.api.events.*;
 import com.hexagram2021.stellarforge.common.function.BlockFunction;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.BlockItem;
@@ -99,18 +97,80 @@ public class SFBlockFunctions {
 			if(state.is(Blocks.STONE_BRICKS)) {
 				ret = Blocks.CRACKED_STONE_BRICKS.defaultBlockState();
 			} else if(state.is(Blocks.DEEPSLATE_BRICKS)) {
-				ret = Blocks.CRACKED_DEEPSLATE_BRICKS.withPropertiesOf(state);
+				ret = Blocks.CRACKED_DEEPSLATE_BRICKS.defaultBlockState();
 			} else if(state.is(Blocks.DEEPSLATE_TILES)) {
-				ret = Blocks.CRACKED_DEEPSLATE_TILES.withPropertiesOf(state);
+				ret = Blocks.CRACKED_DEEPSLATE_TILES.defaultBlockState();
 			} else if(state.is(Blocks.NETHER_BRICKS)) {
-				ret = Blocks.CRACKED_NETHER_BRICKS.withPropertiesOf(state);
+				ret = Blocks.CRACKED_NETHER_BRICKS.defaultBlockState();
 			} else if(state.is(Blocks.POLISHED_BLACKSTONE_BRICKS)) {
 				ret = Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS.defaultBlockState();
 			} else if(state.is(Blocks.INFESTED_STONE_BRICKS)) {
-				ret = Blocks.INFESTED_CRACKED_STONE_BRICKS.withPropertiesOf(state);
+				ret = Blocks.INFESTED_CRACKED_STONE_BRICKS.defaultBlockState();
 			}
 
 			CrackBlockEvent event = new CrackBlockEvent(level, pos, state, ret);
+			MinecraftForge.EVENT_BUS.post(event);
+
+			return event.getTarget();
+		});
+		REGISTER.register("chisel", () -> (level, pos, state) -> {
+			BlockState ret = null;
+
+			if(state.is(Blocks.BOOKSHELF)) {
+				ret = Blocks.CHISELED_BOOKSHELF.defaultBlockState();
+			} else if(state.is(Blocks.DEEPSLATE)) {
+				ret = Blocks.CHISELED_DEEPSLATE.defaultBlockState();
+			} else if(state.is(Blocks.NETHER_BRICKS)) {
+				ret = Blocks.CHISELED_NETHER_BRICKS.defaultBlockState();
+			} else if(state.is(Blocks.POLISHED_BLACKSTONE)) {
+				ret = Blocks.CHISELED_POLISHED_BLACKSTONE.defaultBlockState();
+			} else if(state.is(Blocks.QUARTZ_BLOCK)) {
+				ret = Blocks.CHISELED_QUARTZ_BLOCK.defaultBlockState();
+			} else if(state.is(Blocks.RED_SANDSTONE)) {
+				ret = Blocks.CHISELED_RED_SANDSTONE.defaultBlockState();
+			} else if(state.is(Blocks.SANDSTONE)) {
+				ret = Blocks.CHISELED_SANDSTONE.defaultBlockState();
+			} else if(state.is(Blocks.STONE_BRICKS)) {
+				ret = Blocks.CHISELED_STONE_BRICKS.defaultBlockState();
+			} else if(state.is(Blocks.INFESTED_STONE_BRICKS)) {
+				ret = Blocks.INFESTED_CHISELED_STONE_BRICKS.defaultBlockState();
+			}
+
+			ChiselBlockEvent event = new ChiselBlockEvent(level, pos, state, ret);
+			MinecraftForge.EVENT_BUS.post(event);
+
+			return event.getTarget();
+		});
+		REGISTER.register("smooth", () -> (level, pos, state) -> {
+			BlockState ret = null;
+
+			if(state.is(Blocks.BASALT)) {
+				ret = Blocks.SMOOTH_BASALT.defaultBlockState();
+			} else if(state.is(Blocks.QUARTZ_BLOCK)) {
+				ret = Blocks.SMOOTH_QUARTZ.defaultBlockState();
+			} else if(state.is(Blocks.QUARTZ_SLAB)) {
+				ret = Blocks.SMOOTH_QUARTZ_SLAB.defaultBlockState();
+			} else if(state.is(Blocks.QUARTZ_STAIRS)) {
+				ret = Blocks.SMOOTH_QUARTZ_STAIRS.defaultBlockState();
+			} else if(state.is(Blocks.RED_SANDSTONE)) {
+				ret = Blocks.SMOOTH_RED_SANDSTONE.defaultBlockState();
+			} else if(state.is(Blocks.RED_SANDSTONE_SLAB)) {
+				ret = Blocks.SMOOTH_RED_SANDSTONE_SLAB.defaultBlockState();
+			} else if(state.is(Blocks.RED_SANDSTONE_STAIRS)) {
+				ret = Blocks.SMOOTH_RED_SANDSTONE_STAIRS.defaultBlockState();
+			} else if(state.is(Blocks.SANDSTONE)) {
+				ret = Blocks.SMOOTH_SANDSTONE.defaultBlockState();
+			} else if(state.is(Blocks.SANDSTONE_SLAB)) {
+				ret = Blocks.SMOOTH_SANDSTONE_SLAB.defaultBlockState();
+			} else if(state.is(Blocks.SANDSTONE_STAIRS)) {
+				ret = Blocks.SMOOTH_SANDSTONE_STAIRS.defaultBlockState();
+			} else if(state.is(Blocks.STONE)) {
+				ret = Blocks.SMOOTH_STONE.defaultBlockState();
+			} else if(state.is(Blocks.STONE_SLAB)) {
+				ret = Blocks.SMOOTH_STONE_SLAB.defaultBlockState();
+			}
+
+			SmoothBlockEvent event = new SmoothBlockEvent(level, pos, state, ret);
 			MinecraftForge.EVENT_BUS.post(event);
 
 			return event.getTarget();

@@ -1,7 +1,12 @@
 package com.hexagram2021.stellarforge.common.util;
 
 import com.google.common.collect.ImmutableSet;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.language.I18n;
+import net.minecraft.client.sounds.WeighedSoundEvents;
 import net.minecraft.core.Holder;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.contents.TranslatableContents;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
@@ -13,6 +18,8 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootDataManager;
 import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Set;
@@ -90,6 +97,38 @@ public interface RegistryChecker {
 				if(block.defaultBlockState().requiresCorrectToolForDrops()) {
 					checkIn(id, block, "mineable", BlockTags.MINEABLE_WITH_AXE, BlockTags.MINEABLE_WITH_HOE, BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.MINEABLE_WITH_SHOVEL);
 				}
+			}
+		});
+	}
+
+	@OnlyIn(Dist.CLIENT)
+	static void i18nCheck() {
+		ForgeRegistries.BLOCKS.forEach(block -> {
+			ResourceLocation id = getRegistryName(block);
+			if(!I18n.exists(block.getDescriptionId())) {
+				SFLogger.warn("[I18n Check] Missing I18n for block %s.".formatted(id));
+			}
+		});
+		ForgeRegistries.ITEMS.forEach(item -> {
+			ResourceLocation id = getRegistryName(item);
+			if(!I18n.exists(item.getDescriptionId())) {
+				SFLogger.warn("[I18n Check] Missing I18n for item %s.".formatted(id));
+			}
+		});
+		ForgeRegistries.ENTITY_TYPES.forEach(entityType -> {
+			ResourceLocation id = getRegistryName(entityType);
+			if(!I18n.exists(entityType.getDescriptionId())) {
+				SFLogger.warn("[I18n Check] Missing I18n for entity type %s.".formatted(id));
+			}
+		});
+		ForgeRegistries.SOUND_EVENTS.forEach(soundEvent -> {
+			ResourceLocation id = soundEvent.getLocation();
+			WeighedSoundEvents weighedSoundEvents = Minecraft.getInstance().getSoundManager().getSoundEvent(id);
+			if(weighedSoundEvents != null &&
+					weighedSoundEvents.getSubtitle() instanceof MutableComponent translatableComponent &&
+					translatableComponent.getContents() instanceof TranslatableContents translatableContents &&
+					!I18n.exists(translatableContents.getKey())) {
+				SFLogger.warn("[I18n Check] Missing I18n for subtitle of sound %s.".formatted(id));
 			}
 		});
 	}

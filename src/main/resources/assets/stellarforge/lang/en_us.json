@@ -57,6 +57,10 @@
   "block.stellarforge.cracked_granite_brick_slab": "Cracked Granite Brick Slab",
   "block.stellarforge.cracked_granite_brick_wall": "Cracked Granite Brick Wall",
   "block.stellarforge.chiseled_granite_bricks": "Chiseled Granite Bricks",
+
+  "block.stellarforge.deepslate_stairs": "Deepslate Stairs",
+  "block.stellarforge.deepslate_slab": "Deepslate Slab",
+  "block.stellarforge.deepslate_wall": "Deepslate Wall",
   "block.stellarforge.cracked_deepslate_brick_stairs": "Cracked Deepslate Brick Stairs",
   "block.stellarforge.cracked_deepslate_brick_slab": "Cracked Deepslate Brick Slab",
   "block.stellarforge.cracked_deepslate_brick_wall": "Cracked Deepslate Brick Wall",
@@ -103,5 +107,22 @@
   "block.stellarforge.mossy_polished_blackstone_tile_wall": "Mossy Polished Blackstone Tile Wall",
 
   "block.stellarforge.stone_pillar": "Stone Pillar",
-  "block.stellarforge.deepslate_pillar": "Deepslate Pillar"
+  "block.stellarforge.chiseled_stone": "Chiseled Stone",
+  "block.stellarforge.polished_stone": "Polished Stone",
+  "block.stellarforge.polished_stone_stairs": "Polished Stone Stairs",
+  "block.stellarforge.polished_stone_slab": "Polished Stone Slab",
+  "block.stellarforge.polished_stone_wall": "Polished Stone Wall",
+  "block.stellarforge.chiseled_polished_stone": "Chiseled Polished Stone",
+  "block.stellarforge.deepslate_pillar": "Deepslate Pillar",
+  "block.stellarforge.mossy_cobbled_deepslate": "Mossy Cobbled Deepslate",
+  "block.stellarforge.mossy_cobbled_deepslate_stairs": "Mossy Cobbled Deepslate Stairs",
+  "block.stellarforge.mossy_cobbled_deepslate_slab": "Mossy Cobbled Deepslate Slab",
+  "block.stellarforge.mossy_cobbled_deepslate_wall": "Mossy Cobbled Deepslate Wall",
+  "block.stellarforge.smooth_deepslate": "Smooth Deepslate",
+  "block.stellarforge.smooth_deepslate_stairs": "Smooth Deepslate Stairs",
+  "block.stellarforge.smooth_deepslate_slab": "Smooth Deepslate Slab",
+  "block.stellarforge.smooth_deepslate_wall": "Smooth Deepslate Wall",
+  "block.stellarforge.chiseled_polished_deepslate": "Chiseled Polished Deepslate",
+  "block.stellarforge.chiseled_deepslate_bricks": "Chiseled Deepslate Bricks",
+  "block.stellarforge.chiseled_deepslate_tiles": "Chiseled Deepslate Tiles"
 }
