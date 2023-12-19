@@ -149,25 +149,25 @@ public class SFBlockFunctions {
 			} else if(state.is(Blocks.QUARTZ_BLOCK)) {
 				ret = Blocks.SMOOTH_QUARTZ.defaultBlockState();
 			} else if(state.is(Blocks.QUARTZ_SLAB)) {
-				ret = Blocks.SMOOTH_QUARTZ_SLAB.defaultBlockState();
+				ret = Blocks.SMOOTH_QUARTZ_SLAB.withPropertiesOf(state);
 			} else if(state.is(Blocks.QUARTZ_STAIRS)) {
-				ret = Blocks.SMOOTH_QUARTZ_STAIRS.defaultBlockState();
+				ret = Blocks.SMOOTH_QUARTZ_STAIRS.withPropertiesOf(state);
 			} else if(state.is(Blocks.RED_SANDSTONE)) {
 				ret = Blocks.SMOOTH_RED_SANDSTONE.defaultBlockState();
 			} else if(state.is(Blocks.RED_SANDSTONE_SLAB)) {
-				ret = Blocks.SMOOTH_RED_SANDSTONE_SLAB.defaultBlockState();
+				ret = Blocks.SMOOTH_RED_SANDSTONE_SLAB.withPropertiesOf(state);
 			} else if(state.is(Blocks.RED_SANDSTONE_STAIRS)) {
-				ret = Blocks.SMOOTH_RED_SANDSTONE_STAIRS.defaultBlockState();
+				ret = Blocks.SMOOTH_RED_SANDSTONE_STAIRS.withPropertiesOf(state);
 			} else if(state.is(Blocks.SANDSTONE)) {
 				ret = Blocks.SMOOTH_SANDSTONE.defaultBlockState();
 			} else if(state.is(Blocks.SANDSTONE_SLAB)) {
-				ret = Blocks.SMOOTH_SANDSTONE_SLAB.defaultBlockState();
+				ret = Blocks.SMOOTH_SANDSTONE_SLAB.withPropertiesOf(state);
 			} else if(state.is(Blocks.SANDSTONE_STAIRS)) {
-				ret = Blocks.SMOOTH_SANDSTONE_STAIRS.defaultBlockState();
+				ret = Blocks.SMOOTH_SANDSTONE_STAIRS.withPropertiesOf(state);
 			} else if(state.is(Blocks.STONE)) {
 				ret = Blocks.SMOOTH_STONE.defaultBlockState();
 			} else if(state.is(Blocks.STONE_SLAB)) {
-				ret = Blocks.SMOOTH_STONE_SLAB.defaultBlockState();
+				ret = Blocks.SMOOTH_STONE_SLAB.withPropertiesOf(state);
 			}
 
 			SmoothBlockEvent event = new SmoothBlockEvent(level, pos, state, ret);

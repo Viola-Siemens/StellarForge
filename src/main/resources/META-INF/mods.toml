@@ -8,8 +8,8 @@ modId="stellarforge"
 version="${file.jarVersion}"
 displayName="StellarForge"
 logoFile="logo.png"
-credits="MangoMAOU, Liu Dongyu, rinkiri"
-authors="MangoMAOU, Liu Dongyu, rinkiri"
+credits="MangoMAOU, Liu Dongyu, rinkiri, StarOcean"
+authors="MangoMAOU, Liu Dongyu, rinkiri, StarOcean"
 description='''
 This mod adds some decoration blocks in vanilla style, such as Polished Stone, Dark Prismarine Wall, Mud Tiles.
 '''

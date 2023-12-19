@@ -120,6 +120,8 @@ public final class ForgeEventHandler {
 			event.setTarget(SFBlocks.Stone.CHISELED_STONE.defaultBlockState());
 		} else if(state.is(SFBlocks.Stone.POLISHED_STONE.getFullBlock().get())) {
 			event.setTarget(SFBlocks.Stone.CHISELED_POLISHED_STONE.defaultBlockState());
+		} else if(state.is(SFBlocks.Stone.STONE_TILES.getFullBlock().get())) {
+			event.setTarget(SFBlocks.Stone.CHISELED_STONE_TILES.defaultBlockState());
 		} else if(state.is(Blocks.POLISHED_DEEPSLATE)) {
 			event.setTarget(SFBlocks.Stone.CHISELED_POLISHED_DEEPSLATE.defaultBlockState());
 		} else if(state.is(Blocks.DEEPSLATE_BRICKS)) {
@@ -132,6 +134,14 @@ public final class ForgeEventHandler {
 	public static void onSmoothBlock(SmoothBlockEvent event) {
 		BlockState state = event.getState();
 		if(tryTransfer(state, Blocks.BLACKSTONE, Blocks.BLACKSTONE_STAIRS, Blocks.BLACKSTONE_SLAB, Blocks.BLACKSTONE_WALL, SFBlocks.Stone.SMOOTH_BLACKSTONE, event::setTarget)) {
+			return;
+		}
+		if(state.is(Blocks.STONE_STAIRS)) {
+			event.setTarget(SFBlocks.Stone.SMOOTH_STONE.getStairsBlock().get().withPropertiesOf(state));
+			return;
+		}
+		if(state.is(SFBlocks.Stone.STONE.getWallBlock().get())) {
+			event.setTarget(SFBlocks.Stone.SMOOTH_STONE.getWallBlock().get().withPropertiesOf(state));
 			return;
 		}
 		if(tryTransfer(state, SFBlocks.Stone.DEEPSLATE, SFBlocks.Stone.SMOOTH_DEEPSLATE, event::setTarget)) {
