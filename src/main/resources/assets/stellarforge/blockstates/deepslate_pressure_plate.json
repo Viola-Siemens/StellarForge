@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "stellarforge:block/stone/deepslate_pressure_plate"
+    },
+    "powered=true": {
+      "model": "stellarforge:block/stone/deepslate_pressure_plate_down"
+    }
+  }
+}

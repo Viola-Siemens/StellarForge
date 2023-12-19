@@ -65,6 +65,8 @@ public final class SFBlocks {
 		//vanilla
 		public static final DecorBlockEntry CRACKED_STONE_BRICKS = DecorBlockEntry.createFromFull(Blocks.CRACKED_STONE_BRICKS, SFBlocks::toItem);
 		public static final DecorBlockEntry DEEPSLATE = DecorBlockEntry.createFromFull(Blocks.DEEPSLATE, SFBlocks::toItem);
+		public static final BlockEntry<ButtonBlock> DEEPSLATE_BUTTON = new BlockEntry<>("deepslate_button", () -> BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON), props -> new ButtonBlock(props, SFBlockSetTypes.DEEPSLATE, 20, false), SFBlocks::toItem);
+		public static final BlockEntry<PressurePlateBlock> DEEPSLATE_PRESSURE_PLATE = new BlockEntry<>("deepslate_pressure_plate", () -> BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE), props -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, props, SFBlockSetTypes.DEEPSLATE), SFBlocks::toItem);
 		public static final DecorBlockEntry CRACKED_DEEPSLATE_BRICKS = DecorBlockEntry.createFromFull(Blocks.CRACKED_DEEPSLATE_BRICKS, SFBlocks::toItem);
 		public static final DecorBlockEntry CRACKED_DEEPSLATE_TILES = DecorBlockEntry.createFromFull(Blocks.CRACKED_DEEPSLATE_TILES, SFBlocks::toItem);
 		public static final DecorBlockEntry CRACKED_POLISHED_BLACKSTONE_BRICKS = DecorBlockEntry.createFromFull(Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS, SFBlocks::toItem);

@@ -62,6 +62,7 @@ public interface RegistryChecker {
 			tagCheckSuffix(id, block, blockItem, "_trapdoor", BlockTags.TRAPDOORS, ItemTags.TRAPDOORS);
 			tagCheckSuffix(id, block, blockItem, "_fence", BlockTags.FENCES, ItemTags.FENCES);
 			tagCheckSuffix(id, block, blockItem, "_fence_gate", BlockTags.FENCE_GATES, ItemTags.FENCE_GATES);
+			tagCheckSuffix(id, block, "_pressure_plates", BlockTags.PRESSURE_PLATES);
 			tagCheckSuffix(id, block, blockItem, "_leaves", BlockTags.LEAVES, ItemTags.LEAVES);
 			tagCheckSuffix(id, block, "_wall_hanging_sign", BlockTags.WALL_HANGING_SIGNS).ifFailed(
 					() -> tagCheckSuffix(id, block, blockItem, "_hanging_sign", BlockTags.CEILING_HANGING_SIGNS, ItemTags.HANGING_SIGNS).or(
