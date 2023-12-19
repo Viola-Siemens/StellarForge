@@ -157,6 +157,7 @@ jar {
                 "MixinConfigs"            : "stellarforge.mixins.json"
         ])
     }
+    from "LICENSE"
 }
 
 jar.finalizedBy('reobfJar')
