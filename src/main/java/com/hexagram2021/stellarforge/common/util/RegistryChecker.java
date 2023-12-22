@@ -1,31 +1,51 @@
 package com.hexagram2021.stellarforge.common.util;
 
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.client.sounds.WeighedSoundEvents;
 import net.minecraft.core.Holder;
+import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.contents.TranslatableContents;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.*;
+import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.ConcretePowderBlock;
+import net.minecraft.world.level.block.InfestedBlock;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootDataManager;
+import net.minecraft.world.level.storage.loot.LootDataType;
 import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.CompositeEntryBase;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
+import net.minecraft.world.level.storage.loot.entries.LootTableReference;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.apache.commons.lang3.tuple.Pair;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.function.Supplier;
 
 import static com.hexagram2021.stellarforge.common.util.RegistryHelper.getRegistryName;
+import static net.minecraft.resources.ResourceLocation.DEFAULT_NAMESPACE;
 
 @SuppressWarnings({"deprecation", "unused", "UnusedReturnValue"})
 public interface RegistryChecker {
@@ -92,7 +112,7 @@ public interface RegistryChecker {
 			tagCheckSubstr(id, block, blockItem, "gold", BlockTags.GUARDED_BY_PIGLINS, ItemTags.PIGLIN_LOVED);
 
 			if(!WHITELIST_NO_LOOT_TABLE_BLOCKS.contains(block)) {
-				if((block.getLootTable().equals(BuiltInLootTables.EMPTY) || lootDataManager.getLootTable(block.getLootTable()).equals(LootTable.EMPTY))) {
+				if(block.getLootTable().equals(BuiltInLootTables.EMPTY) || lootDataManager.getLootTable(block.getLootTable()).equals(LootTable.EMPTY)) {
 					SFLogger.warn("[Registry Check] Missing loot table for block %s.".formatted(id));
 				}
 				if(block.defaultBlockState().requiresCorrectToolForDrops()) {
@@ -100,6 +120,148 @@ public interface RegistryChecker {
 				}
 			}
 		});
+	}
+
+	Set<Item> ENTRANCES = Util.make(Sets.newIdentityHashSet(), set -> set.addAll(ImmutableSet.of(
+			Items.AIR, Items.BARRIER, Items.COMMAND_BLOCK, Items.END_PORTAL_FRAME, Items.JIGSAW, Items.LIGHT,
+			Items.CHAIN_COMMAND_BLOCK, Items.STRUCTURE_BLOCK, Items.REPEATING_COMMAND_BLOCK, Items.STRUCTURE_VOID,
+
+			Items.SUSPICIOUS_SAND, Items.SUSPICIOUS_GRAVEL, Items.BUNDLE, Items.FILLED_MAP,
+			Items.WATER_BUCKET, Items.LAVA_BUCKET, Items.POWDER_SNOW_BUCKET, Items.MILK_BUCKET,
+			Items.PUFFERFISH_BUCKET, Items.SALMON_BUCKET, Items.COD_BUCKET, Items.TROPICAL_FISH_BUCKET,
+			Items.AXOLOTL_BUCKET, Items.TADPOLE_BUCKET,
+			Items.EGG, Items.POTION, Items.SPLASH_POTION, Items.LINGERING_POTION,
+			Items.DRAGON_EGG, Items.DRAGON_BREATH, Items.ENCHANTED_BOOK, Items.HONEYCOMB, Items.SCUTE, Items.NETHER_STAR,
+			Items.CHIPPED_ANVIL, Items.DAMAGED_ANVIL,
+
+			Items.CREEPER_HEAD, Items.PIGLIN_HEAD, Items.PLAYER_HEAD, Items.ZOMBIE_HEAD, Items.SKELETON_SKULL,
+			Items.ENDER_DRAGON_SPAWN_EGG, Items.WITHER_SPAWN_EGG
+	)));
+
+	/**
+	 * API for recipe check.
+	 * @param item  Natural resource item, not crafted by any other items.
+	 */
+	static void addEntranceItem(Item item) {
+		ENTRANCES.add(item);
+	}
+
+	List<Pair<Item, Item>> EXTRA_RELATIONS = Util.make(Lists.newArrayList(), list -> list.addAll(ImmutableList.of(
+			Pair.of(Items.COPPER_BLOCK, Items.EXPOSED_COPPER),
+			Pair.of(Items.EXPOSED_COPPER, Items.WEATHERED_COPPER),
+			Pair.of(Items.WEATHERED_COPPER, Items.OXIDIZED_COPPER)
+	)));
+
+	/**
+	 * API for recipe check.
+	 * @param from  For example, copper_block in copper_block -> exposed_copper relation.
+	 * @param to    For example, exposed_copper in copper_block -> exposed_copper relation.
+	 */
+	static void addRelation(Item from, Item to) {
+		EXTRA_RELATIONS.add(Pair.of(from, to));
+	}
+
+	@SuppressWarnings("ConstantValue")
+	static void recipeCheck(LootDataManager lootDataManager, RecipeManager recipeManager, RegistryAccess registryAccess) {
+		ItemGraph graph = new ItemGraph();
+		recipeManager.getRecipes().forEach(recipe ->  {
+			ItemStack result = recipe.getResultItem(registryAccess);
+			if(result != null) {
+				recipe.getIngredients().forEach(
+						ingredient -> Arrays.stream(ingredient.getItems()).forEach(itemStack -> graph.addEdge(itemStack.getItem(), result.getItem()))
+				);
+			}
+		});
+		ForgeRegistries.ENTITY_TYPES.forEach(entityType -> {
+			if (!entityType.getDefaultLootTable().equals(BuiltInLootTables.EMPTY)) {
+				LootTable table = lootDataManager.getLootTable(entityType.getDefaultLootTable());
+				if (!table.equals(LootTable.EMPTY)) {
+					table.pools.forEach(pool -> Arrays.stream(pool.entries).forEach(entry -> {
+						if (entry instanceof LootItem lootItem) {
+							addEntranceItem(lootItem.item);
+						}
+					}));
+				}
+			}
+		});
+		lootDataManager.elements.forEach((id, o) -> {
+			if(id.type().equals(LootDataType.TABLE)) {
+				LootTable table = (LootTable)o;
+				ResourceLocation type = LootContextParamSets.getKey(table.getParamSet());
+				if(type != null && (
+						type.equals(new ResourceLocation(DEFAULT_NAMESPACE, "chest")) ||
+								type.equals(new ResourceLocation(DEFAULT_NAMESPACE, "archaeology")) ||
+								type.equals(new ResourceLocation(DEFAULT_NAMESPACE, "fishing"))
+				)) {
+					if (!table.equals(LootTable.EMPTY)) {
+						table.pools.forEach(pool -> Arrays.stream(pool.entries).forEach(entry -> {
+							if (entry instanceof LootItem lootItem) {
+								addEntranceItem(lootItem.item);
+							}
+						}));
+					}
+				}
+			}
+		});
+		EXTRA_RELATIONS.forEach(pair -> graph.addEdge(pair.getLeft(), pair.getRight()));
+		Objects.requireNonNull(registryAccess.registry(Registries.CREATIVE_MODE_TAB).get().get(CreativeModeTabs.NATURAL_BLOCKS))
+				.displayItemsGenerator.accept(null, (itemStack, ignored) -> addEntranceItem(itemStack.getItem()));
+		Objects.requireNonNull(registryAccess.registry(Registries.CREATIVE_MODE_TAB).get().get(CreativeModeTabs.SPAWN_EGGS))
+				.displayItemsGenerator.accept(null, (itemStack, ignored) -> addEntranceItem(itemStack.getItem()));
+
+		ForgeRegistries.ITEMS.forEach(item -> {
+			addEdgesForLoot(item, graph, lootDataManager);
+			if(item instanceof BlockItem blockItem) {
+				Block block = blockItem.getBlock();
+				BlockState blockState;
+				if((blockState = AxeItem.getAxeStrippingState(block.defaultBlockState())) != null) {
+					graph.addEdge(item, blockState.getBlock().asItem());
+				}
+				if((blockState = ShovelItem.getShovelPathingState(block.defaultBlockState())) != null) {
+					graph.addEdge(item, blockState.getBlock().asItem());
+				}
+				if(InfestedBlock.isCompatibleHostBlock(block.defaultBlockState())) {
+					graph.addEdge(item, InfestedBlock.infestedStateByHost(block.defaultBlockState()).getBlock().asItem());
+				}
+				if(block instanceof ConcretePowderBlock concretePowderBlock) {
+					graph.addEdge(item, concretePowderBlock.concrete.getBlock().asItem());
+				}
+			}
+		});
+
+		ENTRANCES.forEach(graph::visit);
+
+		ForgeRegistries.ITEMS.forEach(item -> graph.degreeIfNotVisited(item).ifPresent(
+				degree -> SFLogger.warn("[Recipe Check] Found a non-natural item %s without any recipes or loot tables (degree = %d).".formatted(getRegistryName(item), degree))
+		));
+	}
+
+	Set<Item> ITEMS_ALREADY_ADDED_EDGES = Sets.newIdentityHashSet();
+	private static void addEdgesForLoot(Item item, ItemGraph graph, LootDataManager lootDataManager) {
+		if(ITEMS_ALREADY_ADDED_EDGES.contains(item)) {
+			return;
+		}
+		ITEMS_ALREADY_ADDED_EDGES.add(item);
+		if (item instanceof BlockItem blockItem) {
+			Block block = blockItem.getBlock();
+			if (!block.getLootTable().equals(BuiltInLootTables.EMPTY)) {
+				LootTable table = lootDataManager.getLootTable(block.getLootTable());
+				if (!table.equals(LootTable.EMPTY)) {
+					table.pools.forEach(pool -> Arrays.stream(pool.entries).forEach(entry -> addEdgeForLootTableEntry(item, entry, graph, lootDataManager)));
+				}
+			}
+		}
+	}
+
+	private static void addEdgeForLootTableEntry(Item item, LootPoolEntryContainer entryContainer, ItemGraph graph, LootDataManager lootDataManager) {
+		if (entryContainer instanceof LootItem lootItem) {
+			graph.addEdge(item, lootItem.item);
+		} else if(entryContainer instanceof CompositeEntryBase compositeEntry) {
+			Arrays.stream(compositeEntry.children).forEach(entry -> addEdgeForLootTableEntry(item, entry, graph, lootDataManager));
+		} else if(entryContainer instanceof LootTableReference lootTableReference) {
+			LootTable table = lootDataManager.getLootTable(lootTableReference.name);
+			table.pools.forEach(pool -> Arrays.stream(pool.entries).forEach(entry -> addEdgeForLootTableEntry(item, entry, graph, lootDataManager)));
+		}
 	}
 
 	@OnlyIn(Dist.CLIENT)

@@ -20,8 +20,6 @@ import org.apache.logging.log4j.LogManager;
 
 import java.util.function.Supplier;
 
-import static com.hexagram2021.stellarforge.common.util.RegistryHelper.getRegistryName;
-
 @Mod(StellarForge.MODID)
 public class StellarForge {
 	public static final String MODID = "stellarforge";
@@ -59,6 +57,7 @@ public class StellarForge {
 	private void onServerAboutToStart(ServerAboutToStartEvent event) {
 		if(SFCommonConfig.ENABLE_REGISTRY_CHECK.get()) {
 			RegistryChecker.registryCheck(event.getServer().getLootData());
+			RegistryChecker.recipeCheck(event.getServer().getLootData(), event.getServer().getRecipeManager(), event.getServer().registryAccess());
 		}
 	}
 }

@@ -10,6 +10,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.SlabType;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -110,6 +111,81 @@ public final class SFBlocks {
 		}
 
 		private static void init() {
+			Infested.init();
+		}
+
+		public static final class Infested {
+			private static final Supplier<BlockBehaviour.Properties> INFESTED_STONE_PROPERTIES = () -> BlockBehaviour.Properties.of().mapColor(MapColor.CLAY);
+			private static final Supplier<BlockBehaviour.Properties> INFESTED_DEEPSLATE_PROPERTIES = () -> BlockBehaviour.Properties.of().mapColor(MapColor.STONE);
+			private static final Supplier<BlockBehaviour.Properties> INFESTED_BLACKSTONE_PROPERTIES = () -> BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY);
+
+			public static final BlockEntry<InfestedBlock> INFESTED_CHISELED_STONE = infestedStone("infested_chiseled_stone", Stone.CHISELED_STONE);
+			public static final BlockEntry<InfestedBlock> INFESTED_POLISHED_STONE = infestedStone("infested_polished_stone", Stone.POLISHED_STONE);
+			public static final BlockEntry<InfestedBlock> INFESTED_CHISELED_POLISHED_STONE = infestedStone("infested_chiseled_polished_stone", Stone.CHISELED_POLISHED_STONE);
+			public static final BlockEntry<InfestedBlock> INFESTED_SMOOTH_STONE = infestedStone("infested_smooth_stone", Stone.SMOOTH_STONE);
+			public static final BlockEntry<InfestedBlock> INFESTED_MOSSY_COBBLESTONE = infestedStone("infested_mossy_cobblestone", Blocks.MOSSY_COBBLESTONE);
+			public static final BlockEntry<InfestedBlock> INFESTED_STONE_TILES = infestedStone("infested_stone_tiles", Stone.STONE_TILES);
+			public static final BlockEntry<InfestedBlock> INFESTED_CHISELED_STONE_TILES = infestedStone("infested_chiseled_stone_tiles", Stone.CHISELED_STONE_TILES);
+			public static final BlockEntry<InfestedBlock> INFESTED_MOSSY_STONE_TILES = infestedStone("infested_mossy_stone_tiles", Stone.MOSSY_STONE_TILES);
+			public static final BlockEntry<InfestedBlock> INFESTED_CRACKED_STONE_TILES = infestedStone("infested_cracked_stone_tiles", Stone.CRACKED_STONE_TILES);
+
+			public static final BlockEntry<InfestedBlock> INFESTED_CHISELED_DEEPSLATE = infestedDeepslate("infested_chiseled_deepslate", Blocks.CHISELED_DEEPSLATE);
+			public static final BlockEntry<InfestedBlock> INFESTED_POLISHED_DEEPSLATE = infestedDeepslate("infested_polished_deepslate", Blocks.POLISHED_DEEPSLATE);
+			public static final BlockEntry<InfestedBlock> INFESTED_CHISELED_POLISHED_DEEPSLATE = infestedDeepslate("infested_chiseled_polished_deepslate", Stone.CHISELED_POLISHED_DEEPSLATE);
+			public static final BlockEntry<InfestedBlock> INFESTED_SMOOTH_DEEPSLATE = infestedDeepslate("infested_smooth_deepslate", Stone.SMOOTH_DEEPSLATE);
+			public static final BlockEntry<InfestedBlock> INFESTED_COBBLED_DEEPSLATE = infestedDeepslate("infested_cobbled_deepslate", Blocks.COBBLED_DEEPSLATE);
+			public static final BlockEntry<InfestedBlock> INFESTED_MOSSY_COBBLED_DEEPSLATE = infestedDeepslate("infested_mossy_cobbled_deepslate", Stone.MOSSY_COBBLED_DEEPSLATE);
+			public static final BlockEntry<InfestedBlock> INFESTED_DEEPSLATE_BRICKS = infestedDeepslate("infested_deepslate_bricks", Blocks.DEEPSLATE_BRICKS);
+			public static final BlockEntry<InfestedBlock> INFESTED_CHISELED_DEEPSLATE_BRICKS = infestedDeepslate("infested_chiseled_deepslate_bricks", Stone.CHISELED_DEEPSLATE_BRICKS);
+			public static final BlockEntry<InfestedBlock> INFESTED_MOSSY_DEEPSLATE_BRICKS = infestedDeepslate("infested_mossy_deepslate_bricks", Stone.MOSSY_DEEPSLATE_BRICKS);
+			public static final BlockEntry<InfestedBlock> INFESTED_CRACKED_DEEPSLATE_BRICKS = infestedDeepslate("infested_cracked_deepslate_bricks", Blocks.CRACKED_DEEPSLATE_BRICKS);
+			public static final BlockEntry<InfestedBlock> INFESTED_DEEPSLATE_TILES = infestedDeepslate("infested_deepslate_tiles", Blocks.DEEPSLATE_TILES);
+			public static final BlockEntry<InfestedBlock> INFESTED_CHISELED_DEEPSLATE_TILES = infestedDeepslate("infested_chiseled_deepslate_tiles", Stone.CHISELED_DEEPSLATE_TILES);
+			public static final BlockEntry<InfestedBlock> INFESTED_MOSSY_DEEPSLATE_TILES = infestedDeepslate("infested_mossy_deepslate_tiles", Stone.MOSSY_DEEPSLATE_TILES);
+			public static final BlockEntry<InfestedBlock> INFESTED_CRACKED_DEEPSLATE_TILES = infestedDeepslate("infested_cracked_deepslate_tiles", Stone.CRACKED_DEEPSLATE_TILES);
+
+			public static final BlockEntry<InfestedBlock> INFESTED_BLACKSTONE = infestedBlackstone("infested_blackstone", Blocks.BLACKSTONE);
+			public static final BlockEntry<InfestedBlock> INFESTED_CHISELED_BLACKSTONE = infestedBlackstone("infested_chiseled_blackstone", Stone.CHISELED_BLACKSTONE);
+			public static final BlockEntry<InfestedBlock> INFESTED_POLISHED_BLACKSTONE = infestedBlackstone("infested_polished_blackstone", Blocks.POLISHED_BLACKSTONE);
+			public static final BlockEntry<InfestedBlock> INFESTED_CHISELED_POLISHED_BLACKSTONE = infestedBlackstone("infested_chiseled_polished_blackstone", Blocks.CHISELED_POLISHED_BLACKSTONE);
+			public static final BlockEntry<InfestedBlock> INFESTED_SMOOTH_BLACKSTONE = infestedBlackstone("infested_smooth_blackstone", Stone.SMOOTH_BLACKSTONE);
+			public static final BlockEntry<InfestedBlock> INFESTED_COBBLED_BLACKSTONE = infestedBlackstone("infested_cobbled_blackstone", Stone.COBBLED_BLACKSTONE);
+			public static final BlockEntry<InfestedBlock> INFESTED_MOSSY_COBBLED_BLACKSTONE = infestedBlackstone("infested_mossy_cobbled_blackstone", Stone.MOSSY_COBBLED_BLACKSTONE);
+			public static final BlockEntry<InfestedBlock> INFESTED_POLISHED_BLACKSTONE_BRICKS = infestedBlackstone("infested_polished_blackstone_bricks", Blocks.POLISHED_BLACKSTONE_BRICKS);
+			public static final BlockEntry<InfestedBlock> INFESTED_CHISELED_BLACKSTONE_BRICKS = infestedBlackstone("infested_chiseled_polished_blackstone_bricks", Stone.CHISELED_POLISHED_BLACKSTONE_BRICKS);
+			public static final BlockEntry<InfestedBlock> INFESTED_MOSSY_BLACKSTONE_BRICKS = infestedBlackstone("infested_mossy_polished_blackstone_bricks", Stone.MOSSY_POLISHED_BLACKSTONE_BRICKS);
+			public static final BlockEntry<InfestedBlock> INFESTED_CRACKED_BLACKSTONE_BRICKS = infestedBlackstone("infested_cracked_polished_blackstone_bricks", Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS);
+			public static final BlockEntry<InfestedBlock> INFESTED_BLACKSTONE_TILES = infestedBlackstone("infested_polished_blackstone_tiles", Stone.POLISHED_BLACKSTONE_TILES);
+			public static final BlockEntry<InfestedBlock> INFESTED_CHISELED_BLACKSTONE_TILES = infestedBlackstone("infested_chiseled_polished_blackstone_tiles", Stone.CHISELED_POLISHED_BLACKSTONE_TILES);
+			public static final BlockEntry<InfestedBlock> INFESTED_MOSSY_BLACKSTONE_TILES = infestedBlackstone("infested_mossy_polished_blackstone_tiles", Stone.MOSSY_POLISHED_BLACKSTONE_TILES);
+			public static final BlockEntry<InfestedBlock> INFESTED_CRACKED_BLACKSTONE_TILES = infestedBlackstone("infested_cracked_polished_blackstone_tiles", Stone.CRACKED_POLISHED_BLACKSTONE_TILES);
+
+			private Infested() {
+			}
+
+			private static void init() {
+			}
+
+			@SuppressWarnings("SameParameterValue")
+			private static BlockEntry<InfestedBlock> infestedStone(String name, Block host) {
+				return new BlockEntry<>(name, INFESTED_STONE_PROPERTIES, props -> new InfestedBlock(host, props));
+			}
+			private static BlockEntry<InfestedBlock> infestedDeepslate(String name, Block host) {
+				return new BlockEntry<>(name, INFESTED_DEEPSLATE_PROPERTIES, props -> new InfestedBlock(host, props));
+			}
+			private static BlockEntry<InfestedBlock> infestedBlackstone(String name, Block host) {
+				return new BlockEntry<>(name, INFESTED_BLACKSTONE_PROPERTIES, props -> new InfestedBlock(host, props));
+			}
+
+			private static BlockEntry<InfestedBlock> infestedStone(String name, Supplier<Block> host) {
+				return new BlockEntry<>(name, INFESTED_STONE_PROPERTIES, props -> new InfestedBlock(host.get(), props));
+			}
+			private static BlockEntry<InfestedBlock> infestedDeepslate(String name, Supplier<Block> host) {
+				return new BlockEntry<>(name, INFESTED_DEEPSLATE_PROPERTIES, props -> new InfestedBlock(host.get(), props));
+			}
+			private static BlockEntry<InfestedBlock> infestedBlackstone(String name, Supplier<Block> host) {
+				return new BlockEntry<>(name, INFESTED_BLACKSTONE_PROPERTIES, props -> new InfestedBlock(host.get(), props));
+			}
 		}
 	}
 

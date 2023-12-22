@@ -10,6 +10,7 @@ import net.minecraft.world.item.crafting.BlastingRecipe;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.SmeltingRecipe;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.InfestedBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraftforge.common.MinecraftForge;
@@ -204,6 +205,18 @@ public class SFBlockFunctions {
 			}
 
 			return ret;
+		});
+		REGISTER.register("infest", () -> (level, pos, state) -> {
+			if(InfestedBlock.isCompatibleHostBlock(state)) {
+				return InfestedBlock.infestedStateByHost(state);
+			}
+			return null;
+		});
+		REGISTER.register("deinfest", () -> (level, pos, state) -> {
+			if(state.getBlock() instanceof InfestedBlock infestedBlock) {
+				return infestedBlock.hostStateByInfested(state);
+			}
+			return null;
 		});
 	}
 
