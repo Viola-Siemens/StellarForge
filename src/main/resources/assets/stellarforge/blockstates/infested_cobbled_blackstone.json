@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "stellarforge:block/stone/cobbled_blackstone"
+    }
+  }
+}

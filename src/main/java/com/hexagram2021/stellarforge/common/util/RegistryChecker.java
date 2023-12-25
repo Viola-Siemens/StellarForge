@@ -35,6 +35,7 @@ import net.minecraft.world.level.storage.loot.entries.LootTableReference;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.commons.lang3.tuple.Pair;
 
@@ -73,6 +74,7 @@ public interface RegistryChecker {
 			if(!WHITELIST_NO_ITEM_BLOCKS.contains(block) && (!id.getPath().startsWith("potted_") && !id.getPath().endsWith("_candle_cake")) && blockItem.equals(Items.AIR)) {
 				SFLogger.warn("[Registry Check] No BlockItem registered for block %s.".formatted(id));
 			}
+			//vanilla tags
 			tagCheckSuffix(id, block, blockItem, "_slab", BlockTags.SLABS, ItemTags.SLABS);
 			tagCheckSuffix(id, block, blockItem, "_stairs", BlockTags.STAIRS, ItemTags.STAIRS);
 			tagCheckSuffix(id, block, blockItem, "_wall", BlockTags.WALLS, ItemTags.WALLS);
@@ -110,6 +112,14 @@ public interface RegistryChecker {
 			);
 
 			tagCheckSubstr(id, block, blockItem, "gold", BlockTags.GUARDED_BY_PIGLINS, ItemTags.PIGLIN_LOVED);
+
+			//forge tags
+			tagCheckSuffix(id, block, blockItem, "_ore", Tags.Blocks.ORES, Tags.Items.ORES).ifFailed(
+					() -> tagCheckPrefix(id, block, blockItem, "ore_", Tags.Blocks.ORES, Tags.Items.ORES)
+			);
+			tagCheckSuffix(id, blockItem, "_seed", Tags.Items.SEEDS).ifFailed(
+					() -> tagCheckPrefix(id, blockItem, "seed_", Tags.Items.SEEDS)
+			);
 
 			if(!WHITELIST_NO_LOOT_TABLE_BLOCKS.contains(block)) {
 				if(block.getLootTable().equals(BuiltInLootTables.EMPTY) || lootDataManager.getLootTable(block.getLootTable()).equals(LootTable.EMPTY)) {
@@ -327,6 +337,18 @@ public interface RegistryChecker {
 		}
 		return new CheckResult(false);
 	}
+	static CheckResult tagCheckSubstr(ResourceLocation id, Item item, String substr, TagKey<Item> itemTag) {
+		if(id.getPath().contains(substr)) {
+			boolean error = false;
+			substr = substr.replace('_', ' ');
+			if(!item.builtInRegistryHolder().is(itemTag)) {
+				SFLogger.warn("[Registry Check] Likely %s item %s is not in tag %s.".formatted(substr, id, itemTag));
+				error = true;
+			}
+			return new CheckResult(true, error);
+		}
+		return new CheckResult(false);
+	}
 
 	static CheckResult tagCheckSuffix(ResourceLocation id, String suffix) {
 		return new CheckResult(id.getPath().endsWith(suffix));
@@ -359,6 +381,18 @@ public interface RegistryChecker {
 		}
 		return new CheckResult(false);
 	}
+	static CheckResult tagCheckSuffix(ResourceLocation id, Item item, String suffix, TagKey<Item> itemTag) {
+		if(id.getPath().endsWith(suffix)) {
+			boolean error = false;
+			suffix = suffix.substring(1).replace('_', ' ');
+			if(!item.builtInRegistryHolder().is(itemTag)) {
+				SFLogger.warn("[Registry Check] Likely %s item %s is not in tag %s.".formatted(suffix, id, itemTag));
+				error = true;
+			}
+			return new CheckResult(true, error);
+		}
+		return new CheckResult(false);
+	}
 
 	static CheckResult tagCheckPrefix(ResourceLocation id, String prefix) {
 		return new CheckResult(id.getPath().startsWith(prefix));
@@ -385,6 +419,18 @@ public interface RegistryChecker {
 			prefix = prefix.substring(0, prefix.length() - 1).replace('_', ' ');
 			if(!block.builtInRegistryHolder().is(blockTag)) {
 				SFLogger.warn("[Registry Check] Likely %s block %s is not in tag %s.".formatted(prefix, id, blockTag));
+				error = true;
+			}
+			return new CheckResult(true, error);
+		}
+		return new CheckResult(false);
+	}
+	static CheckResult tagCheckPrefix(ResourceLocation id, Item item, String prefix, TagKey<Item> itemTag) {
+		if(id.getPath().startsWith(prefix)) {
+			boolean error = false;
+			prefix = prefix.substring(0, prefix.length() - 1).replace('_', ' ');
+			if(!item.builtInRegistryHolder().is(itemTag)) {
+				SFLogger.warn("[Registry Check] Likely %s item %s is not in tag %s.".formatted(prefix, id, itemTag));
 				error = true;
 			}
 			return new CheckResult(true, error);
