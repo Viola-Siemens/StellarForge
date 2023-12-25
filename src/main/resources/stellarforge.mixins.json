@@ -5,7 +5,6 @@
   "refmap": "stellarforge.refmap.json",
   "minVersion": "0.8",
   "mixins": [
-    "SmithingTransformRecipeMixin"
   ],
   "client": [
     "I18nMixin"

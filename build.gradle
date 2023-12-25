@@ -24,7 +24,7 @@ base {
     archivesName = 'stellarforge'
 }
 
-version = '1.20.1-0.1.0'
+version = '1.20.1-0.1.0-snapshot-507EFEDB'
 group = 'com.hexagram2021.stellarforge'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)

@@ -9,6 +9,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.client.sounds.WeighedSoundEvents;
 import net.minecraft.core.Holder;
+import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.MutableComponent;
@@ -18,7 +19,9 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeManager;
+import net.minecraft.world.item.crafting.SmithingTransformRecipe;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ConcretePowderBlock;
@@ -175,6 +178,13 @@ public interface RegistryChecker {
 	static void recipeCheck(LootDataManager lootDataManager, RecipeManager recipeManager, RegistryAccess registryAccess) {
 		ItemGraph graph = new ItemGraph();
 		recipeManager.getRecipes().forEach(recipe ->  {
+			NonNullList<Ingredient> ingredients = recipe.getIngredients();
+			if(recipe instanceof SmithingTransformRecipe smithingTransformRecipe)  {
+				ingredients = NonNullList.create();
+				ingredients.add(smithingTransformRecipe.template);
+				ingredients.add(smithingTransformRecipe.base);
+				ingredients.add(smithingTransformRecipe.addition);
+			}
 			ItemStack result = recipe.getResultItem(registryAccess);
 			if(result != null) {
 				recipe.getIngredients().forEach(
